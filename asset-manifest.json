@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/nonstopper0.github.io/invidstor_react/static/css/main.6e8ce988.chunk.css",
-    "main.js": "/nonstopper0.github.io/invidstor_react/static/js/main.c68430eb.chunk.js",
-    "main.js.map": "/nonstopper0.github.io/invidstor_react/static/js/main.c68430eb.chunk.js.map",
-    "runtime-main.js": "/nonstopper0.github.io/invidstor_react/static/js/runtime-main.e5ab46f6.js",
-    "runtime-main.js.map": "/nonstopper0.github.io/invidstor_react/static/js/runtime-main.e5ab46f6.js.map",
-    "static/js/2.8321e79b.chunk.js": "/nonstopper0.github.io/invidstor_react/static/js/2.8321e79b.chunk.js",
-    "static/js/2.8321e79b.chunk.js.map": "/nonstopper0.github.io/invidstor_react/static/js/2.8321e79b.chunk.js.map",
-    "index.html": "/nonstopper0.github.io/invidstor_react/index.html",
-    "precache-manifest.7796ca93e05a3abef6f9d3efb0f4eb8f.js": "/nonstopper0.github.io/invidstor_react/precache-manifest.7796ca93e05a3abef6f9d3efb0f4eb8f.js",
-    "service-worker.js": "/nonstopper0.github.io/invidstor_react/service-worker.js",
-    "static/css/main.6e8ce988.chunk.css.map": "/nonstopper0.github.io/invidstor_react/static/css/main.6e8ce988.chunk.css.map",
-    "static/js/2.8321e79b.chunk.js.LICENSE.txt": "/nonstopper0.github.io/invidstor_react/static/js/2.8321e79b.chunk.js.LICENSE.txt"
+    "main.css": "/invidstor_react/static/css/main.6e8ce988.chunk.css",
+    "main.js": "/invidstor_react/static/js/main.ea20d03f.chunk.js",
+    "main.js.map": "/invidstor_react/static/js/main.ea20d03f.chunk.js.map",
+    "runtime-main.js": "/invidstor_react/static/js/runtime-main.ff152fe7.js",
+    "runtime-main.js.map": "/invidstor_react/static/js/runtime-main.ff152fe7.js.map",
+    "static/js/2.8321e79b.chunk.js": "/invidstor_react/static/js/2.8321e79b.chunk.js",
+    "static/js/2.8321e79b.chunk.js.map": "/invidstor_react/static/js/2.8321e79b.chunk.js.map",
+    "index.html": "/invidstor_react/index.html",
+    "precache-manifest.3e78a965ed7b2f7b4413640953ec692b.js": "/invidstor_react/precache-manifest.3e78a965ed7b2f7b4413640953ec692b.js",
+    "service-worker.js": "/invidstor_react/service-worker.js",
+    "static/css/main.6e8ce988.chunk.css.map": "/invidstor_react/static/css/main.6e8ce988.chunk.css.map",
+    "static/js/2.8321e79b.chunk.js.LICENSE.txt": "/invidstor_react/static/js/2.8321e79b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.e5ab46f6.js",
+    "static/js/runtime-main.ff152fe7.js",
     "static/js/2.8321e79b.chunk.js",
     "static/css/main.6e8ce988.chunk.css",
-    "static/js/main.c68430eb.chunk.js"
+    "static/js/main.ea20d03f.chunk.js"
   ]
 }
