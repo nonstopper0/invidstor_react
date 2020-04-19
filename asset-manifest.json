@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/nonstopper0.github.io/static/css/main.6e8ce988.chunk.css",
+    "main.js": "/nonstopper0.github.io/static/js/main.36a49341.chunk.js",
+    "main.js.map": "/nonstopper0.github.io/static/js/main.36a49341.chunk.js.map",
+    "runtime-main.js": "/nonstopper0.github.io/static/js/runtime-main.f7350398.js",
+    "runtime-main.js.map": "/nonstopper0.github.io/static/js/runtime-main.f7350398.js.map",
+    "static/js/2.8321e79b.chunk.js": "/nonstopper0.github.io/static/js/2.8321e79b.chunk.js",
+    "static/js/2.8321e79b.chunk.js.map": "/nonstopper0.github.io/static/js/2.8321e79b.chunk.js.map",
+    "index.html": "/nonstopper0.github.io/index.html",
+    "precache-manifest.e3bf336c02bdf99bd786349cd7fdc887.js": "/nonstopper0.github.io/precache-manifest.e3bf336c02bdf99bd786349cd7fdc887.js",
+    "service-worker.js": "/nonstopper0.github.io/service-worker.js",
+    "static/css/main.6e8ce988.chunk.css.map": "/nonstopper0.github.io/static/css/main.6e8ce988.chunk.css.map",
+    "static/js/2.8321e79b.chunk.js.LICENSE.txt": "/nonstopper0.github.io/static/js/2.8321e79b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f7350398.js",
+    "static/js/2.8321e79b.chunk.js",
+    "static/css/main.6e8ce988.chunk.css",
+    "static/js/main.36a49341.chunk.js"
+  ]
+}
