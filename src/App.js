@@ -14,13 +14,17 @@ export default class App extends React.Component {
   render() {
     return (
       <HashRouter>
-          <header>
-              <Link to="/">Home</Link>
-              <Link to="/contact">Contact</Link>
-              <Link to="/shop">Shop</Link>
-              <Link to="/portfolio">Portfolio</Link>
-          </header>
-          <Route exact path="/" component={Home} />
+          <div class="websiteContainer">
+            <header>
+                <Link to="/">Home</Link>
+                <Link to="/contact">Contact</Link>
+                <Link to="/shop">Shop</Link>
+                <Link to="/portfolio">Portfolio</Link>
+            </header>
+            <div class="right">
+              <Route exact path="/" component={Home} />
+            </div>
+          </div>
       </HashRouter>
     );
   }
