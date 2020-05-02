@@ -15,6 +15,10 @@ export default class App extends React.Component {
       <HashRouter>
           <div class="websiteContainer">
             <div class="left">
+                <div class="text">
+                  <h1>InVIDstor</h1>
+                  <p>Investing in content</p>
+                </div>
                 <header>
                   <NavLink exact to="/" activeClassName="active">Home</NavLink>
                   <NavLink exact to="/invest" activeClassName="active">Invest</NavLink>
