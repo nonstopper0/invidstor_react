@@ -8,22 +8,25 @@ export default class App extends React.Component {
   constructor() {
     super()
     this.state = {
-
+      active: null
     }
+  }
+  componentDidUpdate() {
+    console.log(window.location.href.match('\#\/(.*)')[1])
   }
   render() {
     return (
       <HashRouter>
           <div class="websiteContainer">
-            <header>
-                <Link to="/">Home</Link>
-                <Link to="/contact">Contact</Link>
-                <Link to="/shop">Shop</Link>
-                <Link to="/portfolio">Portfolio</Link>
-            </header>
-            <div class="right">
-              <Route exact path="/" component={Home} />
+            <div class="left">
+                <header>
+                  <Link onClick={()=> this.setState({active: 'Home'})} to="/">Home</Link>
+                  <Link onClick={()=> this.setState({active: 'Contact'})} to="/Contact">Contact</Link>
+                  <Link onClick={()=> this.setState({active: 'Shop'})} to="/Shop">Shop</Link>
+                  <Link onClick={()=> this.setState({active: 'Portfolio'})}to="/Portfolio">Portfolio</Link>
+                </header>
             </div>
+            <Route exact path="/" component={Home} />
           </div>
       </HashRouter>
     );

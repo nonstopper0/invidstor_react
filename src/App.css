@@ -1,22 +1,33 @@
 .websiteContainer {
+    display: flex;
     width: 100%;
 }
 
-header {
-    width: 500px;
-    height: 100px;
+.left {
+    width: 30%;
+    max-width: 400px;
+    height: 100vh;
     font-size: 20px;
-    display: flex;
-    justify-content: space-evenly;
     background: rgb(27, 47, 66);
 }
 
-header a {
-    color: white;
-    text-decoration: none;
+header {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
-.right {
-    background-color: white;
-    width: 70%;
+header a {
+    margin: 10px;
+    color: white;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
 }
+
+.active {
+    background: black;
+}
+
