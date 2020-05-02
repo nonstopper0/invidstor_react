@@ -11,23 +11,23 @@
     background: rgb(27, 47, 66);
 }
 
-.text h1 {
+.leftText h1 {
     margin: 0px;
     color: orange;
 }
 
-.text {
-    margin-top: 30px;
+.leftText {
+    margin-top: 15px;
     text-align: center;
     color: white;
 }
 
-.text p {
+.leftText p {
     margin: 0px;
 }
 
 header {
-    margin-top: 100px;
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -45,6 +45,6 @@ header a {
 }
 
 .active {
+    transition: .5s;
     background-color: rgb(14, 24, 34);
 }
-
