@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Link, Route } from 'react-router-dom'
+import { HashRouter, Link, Route, NavLink } from 'react-router-dom'
 import Home from './Components/Home.js'
 import './App.css';
 require('dotenv')
@@ -8,11 +8,7 @@ export default class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      active: null
     }
-  }
-  componentDidUpdate() {
-    console.log(window.location.href.match('\#\/(.*)')[1])
   }
   render() {
     return (
@@ -20,10 +16,10 @@ export default class App extends React.Component {
           <div class="websiteContainer">
             <div class="left">
                 <header>
-                  <Link onClick={()=> this.setState({active: 'Home'})} to="/">Home</Link>
-                  <Link onClick={()=> this.setState({active: 'Contact'})} to="/Contact">Contact</Link>
-                  <Link onClick={()=> this.setState({active: 'Shop'})} to="/Shop">Shop</Link>
-                  <Link onClick={()=> this.setState({active: 'Portfolio'})}to="/Portfolio">Portfolio</Link>
+                  <NavLink exact to="/" activeClassName="active">Home</NavLink>
+                  <NavLink exact to="/invest" activeClassName="active">Invest</NavLink>
+                  <NavLink exact to="/contact" activeClassName="active">Contact</NavLink>
+                  <NavLink exact to="/help" activeClassName="active">Help</NavLink>
                 </header>
             </div>
             <Route exact path="/" component={Home} />
