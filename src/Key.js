@@ -26,3 +26,11 @@ export function storeKey(key, obj) {
         console.log(err)
     }
 }
+
+export function removeKey() {
+    try {
+        localStorage.removeItem('authtoken')
+    } catch(err) {
+        console.log(err)
+    }
+}

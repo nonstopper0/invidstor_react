@@ -1,11 +1,9 @@
 import React from 'react';
-import { HashRouter, Route, NavLink, Link } from 'react-router-dom'
+import { HashRouter, Route, NavLink } from 'react-router-dom'
 
 
-import Authentication from './Authentication.js'
 import LogRegister from './Components/LogRegister.js'
-import { storeKey, getKey } from './Key.js'
-import Fire from './Fire.js'
+import { storeKey, getKey, removeKey } from './Key.js'
 import Home from './Components/Home.js'
 
 
@@ -15,47 +13,63 @@ import { IoIosSettings } from 'react-icons/io'
 require('dotenv').config()
 
 export default class App extends React.Component {
+
   constructor() {
     super()
     this.state = {
-      userLogged: true,
       token: '',
-      isLoading: true
     }
   }
-  componentDidMount = async() => {
+
+  // authenticate the users session and that it is still alive.
+  authenticateUser = async() => {
+    console.log('Authenticating User...')
     const token = await getKey('authtoken')
-    console.log(token)
     if (token) {
-      fetch(`${process.env.REACT_APP_NODE_URL}/user/verify?token=` + token)
+      fetch(`${process.env.REACT_APP_NODE_URL}/user/verify`, {
+        method: 'POST',
+        body: JSON.stringify({token: token}),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
         .then(res => res.json()) 
         .then(json => {
           if (json.status) {
-            console.log('token authenticated')
+            console.log('User authenticated')
             this.setState({
               token: token,
             })
           } else {
-            console.log('authentication failed with', token)
+            console.log('authentication failed')
             this.setState({
-              userLogged: false,
-              token: ''
+              token: false
             })
           }
         })
     } else {
-      this.setState({userLogged: false})
+      console.log('Unable to authenticate.')
+      this.setState({token: false})
     }
   }
+
+  // on initial startup of the web application, authenticate the user to avoid making them sign in again.
+  componentDidMount = async() => {
+    this.authenticateUser()
+  }
+
+  // called from LogRegister.js through props. this sends our token back to app so we can store it globally.
   login = (token) => {
     this.setState({
-      userLogged: true,
       token: token
     })
     storeKey('authtoken', token)
   }
+
+  // logout function that destroys the session in the database and sends the user back to the LogRegister component.
   logout = async () => {
-    if (this.state.token && this.state.userLogged) {
+    console.log('logging out...')
+    if (this.state.token) {
       const response = await fetch(`${process.env.REACT_APP_NODE_URL}/user/logout`, {
         method: 'POST',
         body: JSON.stringify({token: this.state.token}),
@@ -64,17 +78,22 @@ export default class App extends React.Component {
         }
       })
       let parsed = await response.json()
-      this.setState({
-        userLogged: false,
-        token: ''
-      })
+      if (parsed.status) {
+        removeKey()
+        this.setState({
+          token: false
+        })
+      } else {
+        alert(parsed.message)
+      }
     }
+    console.log(this.state)
   }
   render() {
     return (
       <HashRouter>
         <Route exact path="/" component={Home} />
-        { this.state.userLogged ? 
+        { this.state.token ? 
           <div className="websiteContainer">
             <div className="left">
                 <div className="leftText">
