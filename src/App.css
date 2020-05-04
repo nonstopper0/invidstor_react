@@ -44,14 +44,16 @@ header a {
     justify-content: center;
     align-items: center;
     height: 50px;
-    color: white;
+    color: rgb(219, 219, 219);
     text-decoration: none;
     width: 100%;
 }
 
 .active {
-    animation: clipcircle 2s ease;
+    font-weight: bold;
+    animation: clipcircle .5s ease-out;
     background-color: rgb(14, 24, 34) !important;
+    height: 60px;
 }
 
 header a:hover {
@@ -63,6 +65,16 @@ header a:hover {
     flex: 1;
 }
 
+.homeIcons {
+    color: orange;
+    border-radius: 100%;
+    padding: 8px;
+    position: absolute;
+    left: 10px;
+    font-size: 17px;
+    background-color: rgb(21, 36, 51);
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.459);
+}
 
 @keyframes clipcircle {
     from {

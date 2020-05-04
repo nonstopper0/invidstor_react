@@ -6,7 +6,7 @@ export default class Home extends React.Component {
         return (
             <React.Fragment>
                 <div className="homeDataContainer">
-
+                    
                 </div>
             </React.Fragment>
         )

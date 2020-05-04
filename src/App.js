@@ -8,7 +8,7 @@ import Home from './Components/Home.js'
 
 
 import './App.css';
-import { IoIosSettings } from 'react-icons/io'
+import { IoIosSettings, IoIosHome, IoIosCash, IoIosLogOut } from 'react-icons/io'
 
 require('dotenv').config()
 
@@ -93,7 +93,6 @@ export default class App extends React.Component {
         alert(parsed.message)
       }
     }
-    console.log(this.state)
   }
   render() {
     return (
@@ -106,11 +105,11 @@ export default class App extends React.Component {
                   <p>Investing in content</p>
                 </div>
                 <header>
-                  <NavLink exact to="/" activeClassName="active">Dashboard</NavLink>
-                  <NavLink exact to="/invest" activeClassName="active">Invest</NavLink>
-                  <NavLink exact to="/profile" activeClassName="active">My Profile</NavLink>
+                  <NavLink exact to="/" activeClassName="active"><IoIosHome class="homeIcons" />Dashboard</NavLink>
+                  <NavLink exact to="/invest" activeClassName="active"><IoIosCash class="homeIcons" />Invest</NavLink>
+                  <NavLink exact to="/profile" activeClassName="active"><IoIosSettings class="homeIcons" />My Profile</NavLink>
+                  <a onClick={this.logout}><IoIosLogOut class="homeIcons" />Logout</a>
                 </header>
-                <button onClick={this.logout}></button>
             </div>
             <div className="right">
               <Route exact path="/" component={Home} />
