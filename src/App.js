@@ -17,6 +17,7 @@ export default class App extends React.Component {
   constructor() {
     super()
     this.state = {
+      loading: true,
       token: '',
     }
   }
@@ -39,17 +40,22 @@ export default class App extends React.Component {
             console.log('User authenticated')
             this.setState({
               token: token,
+              loading: false
             })
           } else {
             console.log('authentication failed')
             this.setState({
-              token: false
+              token: false,
+              loading: false,
             })
           }
         })
     } else {
       console.log('Unable to authenticate.')
-      this.setState({token: false})
+      this.setState({
+        token: false,
+        loading: false,
+      })
     }
   }
 
@@ -92,7 +98,6 @@ export default class App extends React.Component {
   render() {
     return (
       <HashRouter>
-        <Route exact path="/" component={Home} />
         { this.state.token ? 
           <div className="websiteContainer">
             <div className="left">
@@ -107,9 +112,20 @@ export default class App extends React.Component {
                 </header>
                 <button onClick={this.logout}></button>
             </div>
+            <div className="right">
+              <Route exact path="/" component={Home} />
+              <Route exact path="/invest" component={undefined} />
+            </div>
           </div>
+          
           :
-          <LogRegister login={this.login} />
+          <div>
+              { this.state.loading ? 
+              null
+              :
+              <LogRegister login={this.login} />
+              }     
+          </div>
         }
       </HashRouter>
     );

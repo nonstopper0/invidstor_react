@@ -1,0 +1,7 @@
+.homeDataContainer {
+    width: 90%;
+    height: 90%;
+    margin: auto auto;
+    background: rgba(27, 47, 66, 0.418);
+    border-radius: 20px;
+}
