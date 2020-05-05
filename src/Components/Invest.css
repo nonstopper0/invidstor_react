@@ -1,0 +1,105 @@
+.investDataContainer {
+    position: relative;
+    width: 90%;
+    height: 90%;
+    margin: auto auto;
+    background: rgba(27, 47, 66, 0.418);
+    border-radius: 20px;
+}
+
+.investSpinner {
+    color: orange;
+    margin-bottom: -7px;
+    animation: 4s spinner infinite linear ;
+}
+
+.investInputContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+}
+
+.investInputContainer h2 {
+    margin: 0px;
+    font-size: 70px;
+    color: orange;
+}
+
+.investInputContainer p {
+    font-size: 20px;
+    color: white;
+    margin: 0px;
+    margin-bottom: 20px;
+}
+
+.investInputContainer p button {
+    background: none;
+    border: none;
+}
+
+#inputHelp {
+    color: white;
+    font-size: 30px;
+}
+
+.investInputContainer form {
+    display: flex;
+    align-items: center;
+}
+
+.investInputContainer input {
+        transition: 1s ease;
+        background: rgba(0, 0, 0, 0.103);
+        color: white;
+        font-size: 20px;
+        border: none;
+        border: 1px solid rgb(27, 47, 66);
+        padding: 10px;
+        margin: 10px;
+        width: 400px;
+        text-align: center;
+        border-radius: 30px;
+}
+
+.investInputContainer input:focus {
+    outline: none;
+}
+
+.investInputContainer button {
+    color: white;
+    background-color: orange;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+}
+
+@media screen and (max-width: 700px) {
+    .investInputContainer h2 {
+        font-size: 40px;
+    }
+    .investInputContainer input {
+        width: 200px;
+        font-size: 15px;
+    }
+}
+
+@keyframes spinner {
+    from {
+        transform: rotate(0deg);
+    } 
+    50% {
+        opacity: 0;
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+

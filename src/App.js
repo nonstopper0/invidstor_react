@@ -5,6 +5,7 @@ import { HashRouter, Route, NavLink } from 'react-router-dom'
 import LogRegister from './Components/LogRegister.js'
 import { storeKey, getKey, removeKey } from './Key.js'
 import Home from './Components/Home.js'
+import Invest from './Components/Invest.js'
 
 
 import './App.css';
@@ -105,15 +106,15 @@ export default class App extends React.Component {
                   <p>Investing in content</p>
                 </div>
                 <header>
-                  <NavLink exact to="/" activeClassName="active"><IoIosHome class="homeIcons" />Dashboard</NavLink>
-                  <NavLink exact to="/invest" activeClassName="active"><IoIosCash class="homeIcons" />Invest</NavLink>
-                  <NavLink exact to="/profile" activeClassName="active"><IoIosSettings class="homeIcons" />My Profile</NavLink>
+                  <NavLink exact to="/" activeClassName="active"><IoIosHome className="homeIcons" />Dashboard</NavLink>
+                  <NavLink exact to="/invest" activeClassName="active"><IoIosCash className="homeIcons" />Invest</NavLink>
+                  <NavLink exact to="/profile" activeClassName="active"><IoIosSettings className="homeIcons" />My Profile</NavLink>
                   <a onClick={this.logout}><IoIosLogOut class="homeIcons" />Logout</a>
                 </header>
             </div>
             <div className="right">
               <Route exact path="/" component={Home} />
-              <Route exact path="/invest" component={undefined} />
+              <Route exact path="/invest" component={Invest} />
             </div>
           </div>
           

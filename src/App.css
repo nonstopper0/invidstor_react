@@ -56,6 +56,11 @@ header a {
     height: 60px;
 }
 
+.active .homeIcons {
+    font-size: 25px;
+    box-shadow: none;
+}
+
 header a:hover {
     background-color: rgb(24, 41, 58);
 }
@@ -72,8 +77,7 @@ header a:hover {
     position: absolute;
     left: 10px;
     font-size: 17px;
-    background-color: rgb(21, 36, 51);
-    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.459);
+    box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.411);
 }
 
 @keyframes clipcircle {
