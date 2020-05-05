@@ -10,8 +10,17 @@ export default class Home extends React.Component {
             loading: true,
         }
     }
+    urlParser = (url) => {
+        let newURL = ''
+        if (url.split("")[8] === 'w') {
+            newURL = url.match('/(?<=\=).*')
+            console.log(newURL)
+        } else {
+            console.log('no match', url)
+        }
+        return newURL
+    }
     getVideoData = (url) => {
-        console.log(url)
     }
     handleChange = (e) => {
         this.setState({
@@ -20,7 +29,8 @@ export default class Home extends React.Component {
     }
     handleSubmit = async (e) => {
         e.preventDefault()
-        this.getVideoData(this.state.url)
+        let parsedUrl = await this.urlParser(this.state.url)
+        this.getVideoData(parsedUrl)
     }
     render() {
         return (
@@ -37,6 +47,7 @@ export default class Home extends React.Component {
                             />
                             <button><IoMdPlay /></button>
                         </form>
+                        <h6>Example: https://www.youtube.com/watch?v=ycPr5-27vSI</h6>
                     </div>
                 </div>
             </React.Fragment>

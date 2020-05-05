@@ -59,6 +59,7 @@ header a {
 .active .homeIcons {
     font-size: 25px;
     box-shadow: none;
+    color: orange;
 }
 
 header a:hover {
@@ -71,13 +72,12 @@ header a:hover {
 }
 
 .homeIcons {
-    color: orange;
+    color: grey;
     border-radius: 100%;
     padding: 8px;
     position: absolute;
     left: 10px;
     font-size: 17px;
-    box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.411);
 }
 
 @keyframes clipcircle {
