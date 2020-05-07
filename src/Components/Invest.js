@@ -1,4 +1,5 @@
 import React from 'react'
+import MakeBet from './MakeBet.js'
 import './Invest.css'
 import { IoMdPlay } from 'react-icons/io'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
@@ -7,9 +8,10 @@ export default class Home extends React.Component {
     constructor() {
         super()
         this.state = {
-            url: false,
+            url: '',
             loading: false,
-            message: false,
+            message: 'Video URL',
+            makeBetScreen: false,
         }
     }
     urlParser = (url) => {
@@ -25,13 +27,17 @@ export default class Home extends React.Component {
                 const regex = /(?<=be\/).*(?=[?])/;
                 newURL = url.match(regex)
             }
-    
-            // check if URL seems valid
             if (newURL.length > 11) {
-                return false
+                console.log('this URL is too long: ', newURL)
+                throw Error
             }
+            // check if URL seems valid
             return newURL.toString()
         } catch(err) {
+            this.setState({
+                url: '',
+                message: 'This URL is not valid, please try again'
+            })
             console.log(err)
         }
     }
@@ -47,10 +53,14 @@ export default class Home extends React.Component {
             }
           })
           .then(res => res.json())
-          .then(json => console.log(json))
-        this.setState({
-            loading: false
-        })
+          .then(json => {
+              console.log(json)
+              this.setState({
+                  data: json,
+                  loading: false,
+                  makeBetScreen: true,
+                })
+          })
     }
     handleChange = (e) => {
         this.setState({
@@ -59,36 +69,60 @@ export default class Home extends React.Component {
     }
     handleSubmit = async (e) => {
         e.preventDefault()
-        let parsedUrl = await this.urlParser(this.state.url)
-        if (parsedUrl) {
-            this.getVideoData(parsedUrl)
+        if (this.state.url.length > 10) {
+            let parsedUrl = await this.urlParser(this.state.url)
+            if (parsedUrl) {
+                this.getVideoData(parsedUrl)
+            }
+        } else {
+            this.setState({
+                message: 'Please enter a valid URL'
+            })
         }
     }
     render() {
         return (
             <React.Fragment>
                 <div className="investDataContainer">
-                    { !this.state.loading ? 
-                        <div className="investInputContainer">
-                            <h2>INVESTOR</h2>
-                            <p>Paste the video url below to begin</p>
-                            <form onSubmit={this.handleSubmit}>
-                                <input 
-                                    onChange={this.handleChange}
-                                    name="url"
-                                    placeholder="Video Url"
-                                />
-                                <button><IoMdPlay /></button>
-                            </form>
-                            <h6>Video must be no more than 24 hours old and the poster must have atleast 4 videos</h6>
-                            <h6>Example: https://www.youtube.com/watch?v=ycPr5-27vSI</h6>
+                    
+                    { !this.state.makeBetScreen ? 
+
+                        <div>
+
+                            { !this.state.loading ?
+
+                            <div className="investInputContainer">
+                                <h2>INVESTOR</h2>
+                                <p>Paste the video url below to begin</p>
+                                <form onSubmit={this.handleSubmit}>
+                                    <input 
+                                        value={this.state.url}
+                                        onChange={this.handleChange}
+                                        name="url"
+                                        placeholder={this.state.message}
+                                    />
+                                    <button><IoMdPlay /></button>
+                                </form>
+                                <h6>Video must be no more than 24 hours old and the poster must have atleast 4 videos</h6>
+                                <h6>Example: https://www.youtube.com/watch?v=ycPr5-27vSI</h6>
+                            </div>
+
+                            :
+
+                            <div className="investInputContainer">
+                                <AiOutlineLoading3Quarters id="inputSpinner" />
+                            </div>
+
+                            }
+
                         </div>
                     :
-                    <div className="investInputContainer">
-                        <AiOutlineLoading3Quarters id="inputSpinner" />
-                    </div>
+
+                    <MakeBet data={this.state.data}/>
+
                     }
                 </div>
+                
             </React.Fragment>
         )
     }
