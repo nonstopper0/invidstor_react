@@ -1,7 +1,7 @@
 import React from 'react'
 import './Invest.css'
-import { IoIosSettings, IoIosHelp, IoMdPlay } from 'react-icons/io'
-import { AiOutlineLoading3Quarters, AiOutlineLoading } from 'react-icons/ai'
+import { IoMdPlay } from 'react-icons/io'
+import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 
 export default class Home extends React.Component {
     constructor() {
@@ -13,23 +13,27 @@ export default class Home extends React.Component {
         }
     }
     urlParser = (url) => {
-        let newURL = ''
-        // if the url is the normal url string...
-        if (url.split("")[8] === 'w') {
-            const regex = /(?<=\=).*/gm;
-            newURL = url.match(regex)
-        } 
-        // else if the url string is from the share button (condensed)
-        else {
-            const regex = /(?<=be\/).*/gm;
-            newURL = url.match(regex)
+        try {
+            let newURL = ''
+            // if the url is the normal url string...
+            if (url.split("")[8] === 'w') {
+                const regex = /(?<=\=).*/;
+                newURL = url.match(regex)
+            } 
+            // else if the url string is from the share button (condensed)
+            else {
+                const regex = /(?<=be\/).*(?=[?])/;
+                newURL = url.match(regex)
+            }
+    
+            // check if URL seems valid
+            if (newURL.length > 11) {
+                return false
+            }
+            return newURL.toString()
+        } catch(err) {
+            console.log(err)
         }
-
-        // check if URL seems valid
-        if (newURL.length > 11) {
-            return false
-        }
-        return newURL.toString()
     }
     getVideoData = async(url) => {
         this.setState({
