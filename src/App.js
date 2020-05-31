@@ -6,6 +6,7 @@ import LogRegister from './Components/LogRegister.js'
 import { storeKey, getKey, removeKey } from './Key.js'
 import Home from './Components/Home.js'
 import Invest from './Components/Invest.js'
+import MyProfile from './Components/MyProfile.js'
 
 
 import './App.css';
@@ -115,6 +116,7 @@ export default class App extends React.Component {
             <div className="right">
               <Route exact path="/" component={Home} />
               <Route exact path="/invest" component={Invest} />
+              <Route exact path="/profile" component={() => <MyProfile token={this.state.token}/>} />
             </div>
           </div>
           

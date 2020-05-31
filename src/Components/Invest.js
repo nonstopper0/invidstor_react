@@ -43,7 +43,8 @@ export default class Home extends React.Component {
     }
     getVideoData = async(url) => {
         this.setState({
-            loading: true
+            loading: true,
+            message: ''
         })
         await fetch(`${process.env.REACT_APP_NODE_URL}/youtube/video`, {
             method: 'POST',
@@ -54,12 +55,22 @@ export default class Home extends React.Component {
           })
           .then(res => res.json())
           .then(json => {
-              console.log(json)
-              this.setState({
-                  data: json,
-                  loading: false,
-                  makeBetScreen: true,
-                })
+              // did our request succeed or fail?
+              if (json.status == false) {
+                  console.log('FALSE')
+                  this.setState({
+                      message: json.message,
+                      loading: false,
+                      url: ''
+                  })
+              } else {
+                  console.log(json)
+                  this.setState({
+                      data: json,
+                      loading: false,
+                      makeBetScreen: true,
+                    })
+              }
           })
     }
     handleChange = (e) => {
