@@ -39,3 +39,14 @@
 .myProfileEditingRow input:focus {
     outline: none;
 }
+
+.myProfileEditingButton {
+    border-radius: 15px;
+    float: right;
+    margin: 3%;
+    font-size: 15px;
+    background-color: rgba(0,0,0,.1);
+    padding: 10px 30px 10px 30px;
+    border: none;
+    color: orange;
+}

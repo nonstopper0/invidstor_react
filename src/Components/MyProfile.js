@@ -1,6 +1,6 @@
 import React from 'react'
 import './MyProfile.css'
-import { AiOutlineLoading3Quarters } from 'react-icons/ai'
+import { AiOutlineLoading3Quarters, AiFillEdit } from 'react-icons/ai'
 require('dotenv')
 
 export default class MyProfile extends React.Component {
@@ -8,9 +8,9 @@ export default class MyProfile extends React.Component {
         super()
         this.state = {
             loading: true,
-            editing: true,
+            editing: false,
             userData: {},
-            username: '',
+            display_name: '',
             email: '',
         }
     }
@@ -19,11 +19,7 @@ export default class MyProfile extends React.Component {
     }
     getProfile = async (token) => {
 
-        await fetch(`${process.env.REACT_APP_NODE_URL}/user/info?sessionID=${token}`, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
+        await fetch(`${process.env.REACT_APP_NODE_URL}/user/info?sessionID=${token}`)
             .then(response => response.json())
             .then(json => {
                 if (json.status === true) {
@@ -31,7 +27,7 @@ export default class MyProfile extends React.Component {
                     this.setState({
                         userData: json.userInfo,
                         email: json.userInfo.email,
-                        username: json.userInfo.username
+                        display_name: json.userInfo.display_name
                     })
                 } else {
                     console.log(json.message)
@@ -59,7 +55,7 @@ export default class MyProfile extends React.Component {
                 sessionID: this.props.token,
                 updateInfo: {
                     email: this.state.email,
-                    username: this.state.username
+                    display_name: this.state.display_name
                 }
             }),
             headers: {
@@ -82,10 +78,13 @@ export default class MyProfile extends React.Component {
                         <div className="investDataContainerMyProfileContainer">
 
                             { !this.state.editing ? 
-
+                            // default state
                             <div>
                                 <div className="myProfileRow">
-                                    <h2>Username: <span className="myProfileSpan">{this.state.userData.username}</span></h2>
+                                    <h2>Login: <span className="myProfileSpan">{this.state.userData.username}</span></h2>
+                                </div>
+                                <div className="myProfileRow">
+                                    <h2>Display Name: <span className="myProfileSpan">{this.state.userData.display_name}</span></h2>
                                 </div>
                                 <div className="myProfileRow">
                                     <h2>Joined: <span className="myProfileSpan">{(this.state.userData.created_on).split("").slice(0, 10)}</span></h2>
@@ -96,18 +95,21 @@ export default class MyProfile extends React.Component {
                                 <div className="myProfileRow">
                                     <h2>Credits: <span className="myProfileSpan">{this.state.userData.credits}</span></h2>
                                 </div>
+                                <button className="myProfileEditingButton" onClick={()=>this.setState({editing: true})}><AiFillEdit style={{fontSize: 30}} /></button>
                             </div>
-
                             :
-
+                            // editing button pressed
                             <form onSubmit={this.handleSubmit}>
+                                <div className="myProfileRow">
+                                    <h2>Login: <span className="myProfileSpan">{this.state.userData.username}</span></h2>
+                                </div>
                                 <div className="myProfileEditingRow">
-                                    <h2>Username</h2>
+                                    <h2>Display Name</h2>
                                     <input 
-                                        name="username"
+                                        name="display_name"
                                         className="myProfileEditingRow" 
-                                        value={this.state.username}
-                                        placeholder={this.state.userData.username}
+                                        value={this.state.display_name}
+                                        placeholder={this.state.userData.display_name}
                                         onChange={this.handleChange}
                                     />
                                 </div>
@@ -127,7 +129,7 @@ export default class MyProfile extends React.Component {
                                 <div className="myProfileRow">
                                     <h2>Credits: <span className="myProfileSpan">{this.state.userData.credits}</span></h2>
                                 </div>
-                                <button>Submit</button>
+                                <button className="myProfileEditingButton">Submit</button>
                             </form>
 
                             }

@@ -63,7 +63,19 @@ export default class App extends React.Component {
 
   // on initial startup of the web application, authenticate the user to avoid making them sign in again.
   componentDidMount = async() => {
-    this.authenticateUser()
+    await this.authenticateUser()
+    // get users minimal data every 30 seconds to update live credit numbers.
+    setInterval(() => {
+        fetch(`${process.env.REACT_APP_NODE_URL}/user/info/minimal?sessionID=${this.state.token}`)
+        .then(response => response.json())
+        .then(json => {
+          if (json.status === false) {
+            this.logout()
+          } else {
+            console.log('user data updated...')
+          }
+        })
+    }, 30000)
   }
 
   // called from LogRegister.js through props. this sends our token back to app so we can store it globally.
