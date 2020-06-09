@@ -38,7 +38,6 @@ export default class Home extends React.Component {
                 url: '',
                 message: 'This URL is not valid, please try again'
             })
-            console.log(err)
         }
     }
     getVideoData = async(url) => {
@@ -57,7 +56,6 @@ export default class Home extends React.Component {
           .then(json => {
               // did our request succeed or fail?
               if (json.status == false) {
-                  console.log('FALSE')
                   this.setState({
                       message: json.message,
                       loading: false,

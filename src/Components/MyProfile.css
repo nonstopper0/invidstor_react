@@ -1,0 +1,16 @@
+.myProfileRow {
+    color: orange;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.myProfileSpan {
+    color: white;
+}
+
+.investDataContainerMyProfileContainer {
+    transition: 1s ease;
+    width: 90%;
+    height: 90%;
+    margin: 0 auto;
+    animation: fadeIn 2s ease;
+}

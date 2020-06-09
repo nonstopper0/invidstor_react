@@ -1,22 +1,39 @@
 import React from 'react'
 import './MyProfile.css'
+import { AiOutlineLoading3Quarters } from 'react-icons/ai'
+require('dotenv')
 
 export default class MyProfile extends React.Component {
     constructor() {
         super()
         this.state = {
-            bio: '',
-            last_name: '',
-            first_name: '',
-            location: '',
-            email: ''
+            loading: true,
+            userData: {},
         }
     }
     componentDidMount() {
         this.getProfile(this.props.token)
     }
-    getProfile = (token) => {
-        fetch('')
+    getProfile = async (token) => {
+
+        await fetch(`${process.env.REACT_APP_NODE_URL}/user/info?sessionID=${token}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(json => {
+                if (json.status === true) {
+                    console.log(json.userInfo)
+                    this.setState({userData: json.userInfo})
+                } else {
+                    console.log(json.message)
+                }
+            })
+
+        this.setState({
+            loading: false
+        })
     }
     handleSubmit = (e) => {
         console.log('submitted')
@@ -34,11 +51,25 @@ export default class MyProfile extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <form onSubmit={this.handleSubmit}>
-                    <input
-                        name="" 
-                    />
-                </form>
+                <div className="investDataContainer">
+                { !this.state.loading ? 
+                        <div className="investDataContainerMyProfileContainer">
+                            <div className="myProfileRow">
+                                <h2>Username: <span className="myProfileSpan">{this.state.userData.username}</span></h2>
+                            </div>
+                            <div className="myProfileRow">
+                                <h2>Bio: <span className="myProfileSpan">{this.state.userData.bio}</span></h2>
+                            </div>
+                            <div className="myProfileRow">
+                                <h2>Email: <span className="myProfileSpan">{this.state.userData.email}</span></h2>
+                            </div>
+                        </div>
+                :
+                    <div className="investInputContainer">
+                        <AiOutlineLoading3Quarters id="inputSpinner" />
+                    </div>
+                }
+                </div>
             </React.Fragment>
         )
     }
