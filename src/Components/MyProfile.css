@@ -3,14 +3,39 @@
     border-bottom: 1px solid rgba(255,255,255,.1);
 }
 
+
+
 .myProfileSpan {
     color: white;
+    font-weight: 500;
 }
 
 .investDataContainerMyProfileContainer {
-    transition: 1s ease;
     width: 90%;
     height: 90%;
     margin: 0 auto;
     animation: fadeIn 2s ease;
+}
+
+.myProfileEditingRow {
+    color: orange;
+    display: flex;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.myProfileEditingRow input{
+    background: rgba(0, 0, 0, 0.103);
+    color: white;
+    font-size: 20px;
+    border: none;
+    border: 1px solid rgb(27, 47, 66);
+    margin: 10px;
+    padding-left: 30px;
+    width: 100%;
+    text-align: left;
+    border-radius: 30px;
+}
+
+.myProfileEditingRow input:focus {
+    outline: none;
 }
