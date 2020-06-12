@@ -1,7 +1,7 @@
 import React from 'react'
-import './Home.css'
+import './Dashboard.css'
 
-export default class Home extends React.Component {
+export default class Dashboard extends React.Component {
     render() {
         return (
             <React.Fragment>

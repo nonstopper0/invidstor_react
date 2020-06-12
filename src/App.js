@@ -2,11 +2,11 @@ import React from 'react';
 import { HashRouter, Route, NavLink } from 'react-router-dom'
 
 
-import LogRegister from './Components/LogRegister.js'
 import { storeKey, getKey, removeKey } from './Key.js'
-import Home from './Components/Home.js'
+import Dashboard from './Components/Dashboard.js'
 import Invest from './Components/Invest.js'
 import MyProfile from './Components/MyProfile.js'
+import LandingHome from './Components/Landing/Home.js'
 
 
 import './App.css';
@@ -52,6 +52,10 @@ export default class App extends React.Component {
             })
           }
         })
+        .catch(err => this.setState({
+          token: false,
+          loading: false
+        }))
     } else {
       console.log('Unable to authenticate.')
       this.setState({
@@ -126,20 +130,20 @@ export default class App extends React.Component {
                 </header>
             </div>
             <div className="right">
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={Dashboard} />
               <Route exact path="/invest" component={Invest} />
               <Route exact path="/profile" component={() => <MyProfile token={this.state.token}/>} />
             </div>
           </div>
           
           :
-          <div>
+          <React.Fragment>
               { this.state.loading ? 
               null
               :
-              <LogRegister login={this.login} />
+              <LandingHome />
               }     
-          </div>
+          </React.Fragment>
         }
       </HashRouter>
     );

@@ -8,7 +8,7 @@ export default class LogRegister extends React.Component {
             username: '',
             password: '',
             email: '',
-            action: 'login',
+            action: 'login' || this.props.action,
             message: '',
         }
     }
