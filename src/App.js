@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Route, NavLink } from 'react-router-dom'
+import { HashRouter, Route, NavLink, Redirect, Switch } from 'react-router-dom'
 
 
 import { storeKey, getKey, removeKey } from './Key.js'
@@ -7,6 +7,7 @@ import Dashboard from './Components/Dashboard.js'
 import Invest from './Components/Invest.js'
 import MyProfile from './Components/MyProfile.js'
 import LandingHome from './Components/Landing/Home.js'
+import LogRegister from './Components/LogRegister.js'
 
 
 import './App.css';
@@ -74,9 +75,9 @@ export default class App extends React.Component {
         .then(response => response.json())
         .then(json => {
           if (json.status === false) {
-            this.logout()
+            console.log(json.message)
           } else {
-            console.log('user data updated...')
+            console.log(json.message)
           }
         })
     }, 30000)
@@ -115,7 +116,13 @@ export default class App extends React.Component {
   render() {
     return (
       <HashRouter>
+        <Switch>
+          <Route exact path="/" component={LandingHome}/>
+          <Route exact path="/login" component={() => <LogRegister login={this.login}/>} />
+        </Switch>
+
         { this.state.token ? 
+        <Route path="/dashboard">
           <div className="websiteContainer">
             <div className="left">
                 <div className="leftText">
@@ -123,28 +130,25 @@ export default class App extends React.Component {
                   <p>Investing in content</p>
                 </div>
                 <header>
-                  <NavLink exact to="/" activeClassName="active"><IoIosHome className="homeIcons" />Dashboard</NavLink>
-                  <NavLink exact to="/invest" activeClassName="active"><IoIosCash className="homeIcons" />Invest</NavLink>
-                  <NavLink exact to="/profile" activeClassName="active"><IoIosSettings className="homeIcons" />My Profile</NavLink>
+                  <NavLink exact to="/dashboard/home" activeClassName="active"><IoIosHome className="homeIcons" />Dashboard</NavLink>
+                  <NavLink exact to="/dashboard/invest" activeClassName="active"><IoIosCash className="homeIcons" />Invest</NavLink>
+                  <NavLink exact to="/dashboard/profile" activeClassName="active"><IoIosSettings className="homeIcons" />My Profile</NavLink>
                   <a onClick={this.logout}><IoIosLogOut class="homeIcons" />Logout</a>
                 </header>
             </div>
             <div className="right">
-              <Route exact path="/" component={Dashboard} />
-              <Route exact path="/invest" component={Invest} />
-              <Route exact path="/profile" component={() => <MyProfile token={this.state.token}/>} />
+              <Route exact path="/dashboard/home" component={Dashboard} />
+              <Route exact path="/dashboard/invest" component={Invest} />
+              <Route exact path="/dashboard/profile" component={() => <MyProfile token={this.state.token}/>} />
             </div>
           </div>
-          
+          </Route>
           :
-          <React.Fragment>
-              { this.state.loading ? 
-              null
-              :
-              <LandingHome />
-              }     
-          </React.Fragment>
+
+          this.state.loading ? null : <Redirect to="/"/>
+
         }
+        <Route render={() =>  <Redirect to="/"/>} />
       </HashRouter>
     );
   }
