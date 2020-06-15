@@ -21,7 +21,7 @@ export default class App extends React.Component {
     super()
     this.state = {
       loading: true,
-      token: '',
+      token: false,
       credits: '',
       userName: '',
     }
@@ -76,7 +76,9 @@ export default class App extends React.Component {
       .then(response => response.json())
       .then(json => {
         if (json.status === false) {
-          console.log(json.message)
+          this.setState({
+            token: false
+          })
         } else {
           console.log(json)
         }
@@ -129,7 +131,7 @@ export default class App extends React.Component {
     return (
       <HashRouter>
         <Switch>
-          <Route exact path="/" component={() => <LandingHome token={this.state.token} name={this.state.name} history={this.props.history}/>}/>
+          <Route path="/home" component={() => <LandingHome logout={this.logout} token={this.state.token} name={this.state.name} history={this.props.history}/>}/>
           <Route exact path="/login" component={() => <LogRegister login={this.login}/>} />
         </Switch>
 
@@ -157,10 +159,10 @@ export default class App extends React.Component {
           </Route>
           :
 
-          this.state.loading ? null : <Redirect to="/"/>
+          this.state.loading ? null : <Redirect to="/home"/>
 
         }
-        <Route render={() =>  <Redirect to="/"/>} />
+        <Route render={() =>  <Redirect to="/home"/>} />
       </HashRouter>
     );
   }
