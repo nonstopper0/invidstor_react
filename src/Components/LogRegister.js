@@ -1,7 +1,8 @@
 import React from 'react'
 import './LogRegister.css'
+import { withRouter } from 'react-router-dom'
 
-export default class LogRegister extends React.Component {
+class LogRegister extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -46,6 +47,7 @@ export default class LogRegister extends React.Component {
                 message: ''
             })
             this.props.login(parsed.token)
+            this.props.history.push('/dashboard')
         } else {
             this.setState({
                 message: parsed.message
@@ -124,3 +126,5 @@ export default class LogRegister extends React.Component {
         )
     }
 }
+
+export default withRouter(LogRegister);

@@ -1,7 +1,7 @@
 import React from 'react';
-import { HashRouter, Route, NavLink, Redirect, Switch } from 'react-router-dom'
+import { HashRouter, Route, NavLink, Redirect, Switch, withRouter } from 'react-router-dom'
 
-
+//components
 import { storeKey, getKey, removeKey } from './Key.js'
 import Dashboard from './Components/Dashboard.js'
 import Invest from './Components/Invest.js'
@@ -9,7 +9,7 @@ import MyProfile from './Components/MyProfile.js'
 import LandingHome from './Components/Landing/Home.js'
 import LogRegister from './Components/LogRegister.js'
 
-
+//styling
 import './App.css';
 import { IoIosSettings, IoIosHome, IoIosCash, IoIosLogOut } from 'react-icons/io'
 
@@ -22,6 +22,8 @@ export default class App extends React.Component {
     this.state = {
       loading: true,
       token: '',
+      credits: '',
+      userName: '',
     }
   }
 
@@ -42,6 +44,7 @@ export default class App extends React.Component {
           if (json.status) {
             console.log('User authenticated')
             this.setState({
+              userInfo: '',
               token: token,
               loading: false
             })
@@ -66,20 +69,29 @@ export default class App extends React.Component {
     }
   }
 
+  // get users credits 
+  runningAuthentication = async() => {
+    if (this.state.token) {
+      fetch(`${process.env.REACT_APP_NODE_URL}/user/info/minimal?sessionID=${this.state.token}`)
+      .then(response => response.json())
+      .then(json => {
+        if (json.status === false) {
+          console.log(json.message)
+        } else {
+          console.log(json)
+        }
+      })
+    } else {
+      console.log('user not signed in')
+    }
+  }
+
   // on initial startup of the web application, authenticate the user to avoid making them sign in again.
   componentDidMount = async() => {
     await this.authenticateUser()
     // get users minimal data every 30 seconds to update live credit numbers.
     setInterval(() => {
-        fetch(`${process.env.REACT_APP_NODE_URL}/user/info/minimal?sessionID=${this.state.token}`)
-        .then(response => response.json())
-        .then(json => {
-          if (json.status === false) {
-            console.log(json.message)
-          } else {
-            console.log(json.message)
-          }
-        })
+      this.runningAuthentication()
     }, 30000)
   }
 
@@ -117,7 +129,7 @@ export default class App extends React.Component {
     return (
       <HashRouter>
         <Switch>
-          <Route exact path="/" component={LandingHome}/>
+          <Route exact path="/" component={() => <LandingHome token={this.state.token} name={this.state.name} history={this.props.history}/>}/>
           <Route exact path="/login" component={() => <LogRegister login={this.login}/>} />
         </Switch>
 

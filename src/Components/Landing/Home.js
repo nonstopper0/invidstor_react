@@ -1,13 +1,17 @@
 import React from 'react'
 import './Home.css'
+import { withRouter } from 'react-router-dom'
 
-export default class LandingHome extends React.Component {
+class LandingHome extends React.Component {
     constructor() {
         super()
         this.state = {
         }
     }
     render() {
+        const {
+            userInfo
+        } = this.props
         return (
             <React.Fragment>
                 <div>
@@ -21,3 +25,5 @@ export default class LandingHome extends React.Component {
         )
     }
 }
+
+export default withRouter(LandingHome)
