@@ -17,6 +17,8 @@ class LandingHome extends React.Component {
             token,
             name
         } = this.props
+        const stars = []
+
         return (
             <React.Fragment>
                 <div>
@@ -25,7 +27,7 @@ class LandingHome extends React.Component {
 
                             { !token ? 
 
-                            <div className="landing-header-navigation">
+                            <div className="landing-header-navigation-fullscreen">
                                 <NavLink exact to="/home" className="landing-header-button" activeClassName="landing-header-button-active">Home</NavLink>
                                 <NavLink exact to="/home/about" className="landing-header-button" activeClassName="landing-header-button-active">About</NavLink>
                                 <NavLink exact to="/home/contact" className="landing-header-button" activeClassName="landing-header-button-active">Contact</NavLink>
@@ -34,7 +36,7 @@ class LandingHome extends React.Component {
 
                             :
 
-                            <div className="landing-header-navigation">
+                            <div className="landing-header-navigation-fullscreen">
                                 <NavLink exact to="/home" className="landing-header-button" activeClassName="landing-header-button-active">Home</NavLink>
                                 <NavLink exact to="/home/about" className="landing-header-button" activeClassName="landing-header-button-active">About</NavLink>
                                 <NavLink exact to="/dashboard" className="landing-header-button" activeClassName="landing-header-button-active">Dashboard</NavLink>
@@ -47,7 +49,11 @@ class LandingHome extends React.Component {
                         <Route exact path="/home">
                             <div className="landing-page-home-background">
                                 <div className="landing-page-home-top-container">
-                                    <div className="landing-page-home-diagonal"/>
+                                    <div className="landing-page-home-3row">
+                                        <div className="landing-page-home-3row-div"></div>
+                                        <div className="landing-page-home-3row-div"></div>
+                                        <div className="landing-page-home-3row-div"></div>
+                                    </div>
                                 </div>
                             </div>
                         </Route>
