@@ -17,7 +17,10 @@
 
 .leftText h1 {
     margin: 0px;
-    color: orange;
+    background: linear-gradient(45deg, #00d2ff 0%, #3a47d5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .leftText {
@@ -59,7 +62,7 @@ header a {
 .active .homeIcons {
     font-size: 25px;
     box-shadow: none;
-    color: orange;
+    color: rgb(24, 158, 196)
 }
 
 header a:hover {

@@ -29,9 +29,15 @@
 }
 
 .investInputContainer h2 {
-    margin: 0px;
+    margin: 5px;
+    padding: 0px 40px 0px 40px;
+    border-radius: 30px;
+    color: white;
     font-size: 70px;
-    color: orange;
+    background: linear-gradient(45deg, #00d2ff 0%, #3a47d5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .investInputContainer p {
@@ -39,6 +45,7 @@
     color: white;
     margin: 0px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .investInputContainer p button {
@@ -75,7 +82,7 @@
 
 .investInputContainer button {
     color: white;
-    background-color: orange;
+    background: linear-gradient(45deg, #00d2ff 0%, #3a47d5 100%);
     border-radius: 100%;
     width: 40px;
     height: 40px;
@@ -91,16 +98,20 @@
 
 @media screen and (max-width: 700px) {
     .investInputContainer h2 {
-        font-size: 40px;
+        font-size: 35px;
+        margin: 0px;
     }
     .investInputContainer input {
-        width: 60vw;
-        font-size: 15px;
+        margin: 0px;
+        margin-bottom: 20px;
+        width: 80vw;
+        font-size: 14px;
     }
-    .investSpinner {
-        margin-bottom: -2px;
-    }
-    .investInputContainer h6 {
+    .investInputContainer form {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
     }
 }
 

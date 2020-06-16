@@ -96,7 +96,7 @@
     font-size: 15px;
     letter-spacing: 2px;
     width: 90%;
-    background-color: rgb(223, 145, 0);
+    background: linear-gradient(45deg, #00d2ff 0%, #3a47d5 100%);
     border: none;
     height: 30px;
     color: white;

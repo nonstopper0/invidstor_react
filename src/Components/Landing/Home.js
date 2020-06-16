@@ -44,11 +44,18 @@ class LandingHome extends React.Component {
                             }
                     </div>
                     <Switch>
+                        <Route exact path="/home">
+                            <div className="landing-page-home-background">
+                                <div className="landing-page-home-top-container">
+                                    <div className="landing-page-home-diagonal"/>
+                                </div>
+                            </div>
+                        </Route>
                         <Route exact path="/home/about">
                             <h1>About page</h1>
+                            <h3>djawdid</h3>
                         </Route>
                     </Switch>
-
                 </div>
             </React.Fragment>
         )
