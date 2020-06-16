@@ -5,7 +5,7 @@
     width: 100%;
 }
 
-#landing-header-invidstor {
+#landing-header-invidstor-desktop {
     float: left;
     color: white;
     margin-left: 4%;
@@ -42,13 +42,52 @@
 
 }
 
+
+
+
+
+
+
+
 .landing-page-home-background {
     width: 100%;
     height: 1000px;
     background: linear-gradient(45deg, #00d2ff 0%, #3a47d5 100%);
     position: absolute;
-    overflow: hidden;
     z-index: -1;
+}
+
+.landing-page-home-top-container {
+    width: 100%;
+    height: 900px;
+}
+
+.landing-page-home-top-text-container {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+}
+
+.landing-page-home-top-text-container h2 {
+    font-size: 35px;
+}
+
+.landing-page-home-top-text-button {
+    border: none;
+    text-decoration: none;
+    color: #00d2ff;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 15px 4px 20px 4px;
+    padding: 10px 50px 10px 50px;
+    background-color: white; 
+}
+
+.landing-page-home-top-text-button:hover {
+    transition: 1s ease;
+    color: black;
 }
 
 .landing-page-home-3row {
@@ -67,8 +106,10 @@
     box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.082);
     border-radius: 10px;
     width: 30%;
-    min-width: 260px;
-    margin: 10px;
+    min-width: 280px;
+    max-width: 90%;
+    margin: 15px;
+    text-align: center;
 }
 
 

@@ -23,7 +23,7 @@ class LandingHome extends React.Component {
             <React.Fragment>
                 <div>
                     <div className="landing-header">
-                        <h1 id="landing-header-invidstor">InVIDstor</h1>
+                        <h1 id="landing-header-invidstor-desktop">InVIDstor</h1>
 
                             { !token ? 
 
@@ -49,11 +49,30 @@ class LandingHome extends React.Component {
                         <Route exact path="/home">
                             <div className="landing-page-home-background">
                                 <div className="landing-page-home-top-container">
-                                    <div className="landing-page-home-3row">
-                                        <div className="landing-page-home-3row-div"></div>
-                                        <div className="landing-page-home-3row-div"></div>
-                                        <div className="landing-page-home-3row-div"></div>
+
+                                    <div className="landing-page-home-top-container">
+                                        <div className="landing-page-home-top-text-container">
+                                            <h2>Invest in content.</h2>
+                                            { token? 
+                                            <NavLink to="/dashboard" className="landing-page-home-top-text-button">Invest now</NavLink>
+                                            :
+                                            <NavLink to="/login" className="landing-page-home-top-text-button">Invest now</NavLink>
+                                            }
+                                        </div>
                                     </div>
+
+                                    <div className="landing-page-home-3row">
+                                        <div className="landing-page-home-3row-div">
+                                            <h2>Invest</h2>
+                                        </div>
+                                        <div className="landing-page-home-3row-div">
+                                            <h2>Profit</h2>
+                                        </div>
+                                        <div className="landing-page-home-3row-div">
+                                            <h2>Support</h2>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </Route>
