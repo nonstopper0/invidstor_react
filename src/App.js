@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Route, NavLink, Redirect, Switch, withRouter } from 'react-router-dom'
+import { HashRouter, Route, NavLink, Redirect, Switch } from 'react-router-dom'
 
 //components
 import { storeKey, getKey, removeKey } from './Key.js'

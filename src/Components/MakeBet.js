@@ -22,7 +22,7 @@ export default class MakeBet extends React.Component {
             <React.Fragment>
                 <div className="makeBetContainer">
                     <div className="makeBetTopContainer">
-                        <img className="makeBetThumbnail" src={generalData.thumbnails.default.url}/>
+                        <img alt="video thumbnail" className="makeBetThumbnail" src={generalData.thumbnails.default.url}/>
                         <h2>{generalData.title}</h2>
                         <p>By: {generalData.channelTitle}</p>
                         <div className="makeBetStatsContainer">

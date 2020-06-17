@@ -240,18 +240,27 @@
 
 .landing-page-footer > p {
     color: rgb(66, 66, 66);
+    margin: 100px 0px 100px;
 }
 
 .landing-page-footer-column {
     max-width: 90%;
     margin: 20px;
+    width: 250px;
+}
+
+.landing-page-footer-column h3 {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.212);
+    text-align: left;
+    padding-left: 10px;
+    padding-bottom: 5px;
 }
 
 .landing-page-footer-nav-div {
     display: flex;
-    width: 200px;
     flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: baseline;
     justify-content: space-evenly;
 }
 
