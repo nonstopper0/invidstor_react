@@ -68,6 +68,7 @@ class LogRegister extends React.Component {
                 message: ''
             })
             this.props.login(parsed.token)
+            this.props.history.push('/dashboard')
         } else {
             this.setState({
                 message: parsed.message
