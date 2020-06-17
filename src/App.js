@@ -91,13 +91,16 @@ export default class App extends React.Component {
   // on initial startup of the web application, authenticate the user to avoid making them sign in again.
   componentDidMount = async() => {
     await this.authenticateUser()
-    // get users minimal data every 30 seconds to update live credit numbers.
+    // get users minimal data every 30 seconds to update live credit numbers. and use the intervalcount variable to limit the amount of calls
+    let intervalCount = 1
     setInterval(() => {
-      this.runningAuthentication()
+      if (intervalCount < 30) {
+        this.runningAuthentication()
+      }
     }, 30000)
   }
 
-  // called from LogRegister.js through props. this sends our token back to app so we can store it globally.
+  // called from LogRegister.js through props. this sends our token back to app(this component) so we can store it globally.
   login = (token) => {
     this.setState({
       token: token

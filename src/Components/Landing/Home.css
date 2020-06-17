@@ -65,6 +65,7 @@
 
 
 .landing-page-home-background {
+    overflow: hidden;
     width: 100%;
     height: 1000px;
     background: linear-gradient(45deg, #00d2ff 0%, #3a47d5 100%);
@@ -83,11 +84,16 @@
     top: 45%;
     left: 35%;
     transform: translate(-50%, -50%);
+    transition: 2s ease;
     animation: home-load-in 2s ease-out;
 }
 
+.landing-page-home-top-text-container:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
 .landing-page-home-top-text-container h2 {
-    font-size: 35px;
+    font-size: 40px;
 }
 
 .landing-page-home-top-text-button {
@@ -107,6 +113,21 @@
     color: rgb(70, 70, 70);
 }
 
+.landing-page-home-curve {
+    transition: 2s ease;
+    opacity: .3;
+    position: absolute;
+    bottom: 0px;
+    width: 110%;
+    left: -10%;
+}
+
+.landing-page-home-curve:hover {
+    transform: scale(2)
+}
+
+
+
 .landing-page-home-3row {
     display: flex;
     width: 90%;
@@ -115,6 +136,10 @@
     height: fit-content;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    position: absolute;
+    top: 900px;
+    left: 50%;
+    transform: translate(-50%, 0%);
 }
 
 .landing-page-home-3row-div {
@@ -125,8 +150,27 @@
     width: 30%;
     min-width: 280px;
     max-width: 90%;
+    padding: 20px;
     margin: 15px;
     text-align: center;
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box;    
+    box-sizing: border-box;     
+}
+
+.landing-page-home-3row-div p {
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.landing-page-home-3row-div h2 {
+    font-size: 20px;
+    color: #16a8c9;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 10px;
+    margin: 5px auto 30px auto;
+    border-bottom: 1px solid grey;
 }
 
 
@@ -139,7 +183,13 @@
         display: contents;
     }
     .landing-page-home-3row-div { 
-        min-width: 90vw;
+        min-width: 80vw;
+    }
+    .landing-page-home-top-text-container h2 {
+        font-size: 30px;
+    }
+    .landing-page-home-curve { 
+        width: 300%;
     }
 
     /* Mobile header */
@@ -147,27 +197,46 @@
         display: contents;
     }
     #landing-header-mobile-button {
+        position: fixed;
         font-size: 25px;
         margin: 0px;
         padding: 10px;
         border: none;
-        background: none;
-        position: absolute;
+        background: rgb(255, 255, 255);
+        border-radius: 10px;
         top: 15px;
         right: 20px;
-        z-index: 1;
+        z-index: 2;
     }
     #landing-header-mobile-button-hamburger {
-        color: white;
+        color: rgb(99, 99, 99);
     }
     .landing-header-mobile-menu {
         position: fixed;
         top: 0px;
         right: 0px;
-        width: 200px;
-        background-color: black;
-        transition: 1s ease;
+        width: 179px;
+        background-color: rgb(24, 41, 58);
+        transition: .6s ease;
         height: 100vh;
+        padding: 10px;
+        z-index: 1;
+    }
+    .landing-header-mobile-navigation {
+        padding-top: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .landing-header-mobile-button {
+        text-align: right;
+        color: white;
+        text-decoration: none;
+        font-size: 25px;
+        font-weight: 500;
+        margin-bottom: 20px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.144);
+        padding: 0px 5px 8px 0px;
     }
 }
 
