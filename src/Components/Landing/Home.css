@@ -75,7 +75,7 @@
 
 .landing-page-home-top-container {
     width: 100%;
-    height: 900px;
+    height: 1000px;
 }
 
 .landing-page-home-top-text-container {
@@ -126,6 +126,14 @@
     transform: scale(2)
 }
 
+#landing-page-home-desksvg {
+    position: absolute; 
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 70%;
+    height: 50vh;
+}
+
 
 
 .landing-page-home-3row {
@@ -140,13 +148,13 @@
     top: 900px;
     left: 50%;
     transform: translate(-50%, 0%);
+    z-index: 1;
 }
 
 .landing-page-home-3row-div {
-    background-color: white;
     height: 250px;
-    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.082);
-    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.171);
+    border-radius: 20px;
     width: 30%;
     min-width: 280px;
     max-width: 90%;
@@ -161,20 +169,39 @@
 .landing-page-home-3row-div p {
     font-size: 17px;
     font-weight: 400;
+    color: white;
 }
 
 .landing-page-home-3row-div h2 {
-    font-size: 20px;
-    color: #16a8c9;
+    font-size: 25px;
+    letter-spacing: 6px;
+    color: white;
     width: fit-content;
     margin: 0 auto;
     padding: 10px;
+    font-weight: 800;
     margin: 5px auto 30px auto;
-    border-bottom: 1px solid grey;
 }
 
 
 
+
+
+
+.landing-page-home2-background {
+    position: absolute;
+    top: 1000px;
+    background-color: white;
+    width: 100%;
+    height: 3000px;
+}
+
+
+@media screen and (max-width: 1000px) {
+    #landing-page-home-desksvg {
+        height: 30vh;
+    }
+}
 @media screen and (max-width: 700px) {
     .landing-header-navigation-fullscreen {
         display: none;
@@ -185,11 +212,20 @@
     .landing-page-home-3row-div { 
         min-width: 80vw;
     }
+    .landing-page-home-top-text-container {
+        font-size: 30px;
+        width: 100%;
+        left: 50%;
+        top: 30%;
+    }
     .landing-page-home-top-text-container h2 {
         font-size: 30px;
     }
     .landing-page-home-curve { 
         width: 300%;
+    }
+    #landing-page-home-desksvg {
+        display: none;
     }
 
     /* Mobile header */
@@ -206,7 +242,7 @@
         border-radius: 10px;
         top: 15px;
         right: 20px;
-        z-index: 2;
+        z-index: 6;
     }
     #landing-header-mobile-button-hamburger {
         color: rgb(99, 99, 99);
@@ -220,7 +256,7 @@
         transition: .6s ease;
         height: 100vh;
         padding: 10px;
-        z-index: 1;
+        z-index: 5;
     }
     .landing-header-mobile-navigation {
         padding-top: 80px;

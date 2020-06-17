@@ -17,21 +17,8 @@ export default class Home extends React.Component {
     urlParser = (url) => {
         try {
             let newURL = ''
-            // if the url is the normal url string...
-            if (url.split("")[8] === 'w') {
-                const regex = /(?<=\=).*/;
-                newURL = url.match(regex)
-            } 
-            // else if the url string is from the share button (condensed)
-            else {
-                const regex = /(?<=be\/).*(?=[?])/;
-                newURL = url.match(regex)
-            }
-            if (newURL.length > 11) {
-                console.log('this URL is too long: ', newURL)
-                throw Error
-            }
-            // check if URL seems valid
+            const regex = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+            newURL = url.match(regex)[7]
             return newURL.toString()
         } catch(err) {
             this.setState({
@@ -55,7 +42,7 @@ export default class Home extends React.Component {
           .then(res => res.json())
           .then(json => {
               // did our request succeed or fail?
-              if (json.status == false) {
+              if (json.status === false) {
                   this.setState({
                       message: json.message,
                       loading: false,
