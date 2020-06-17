@@ -2,8 +2,10 @@ import React from 'react'
 import './Home.css'
 import { withRouter, NavLink, Switch, Route } from 'react-router-dom'
 import { GiHamburgerMenu } from 'react-icons/gi'
+
 import DeskMan from "./SVG/Asset 2.svg"
 import LightBulbs from './SVG/Asset 1.svg'
+import InvestPlant from './SVG/invest.svg'
 
 class LandingHome extends React.Component {
     constructor() {
@@ -35,7 +37,6 @@ class LandingHome extends React.Component {
 
                         <div className="landing-header-navigation-fullscreen">
                             <NavLink exact to="/home" className="landing-header-button" activeClassName="landing-header-button-active">Home</NavLink>
-                            <NavLink exact to="/home/about" className="landing-header-button" activeClassName="landing-header-button-active">About</NavLink>
                             <NavLink exact to="/home/contact" className="landing-header-button" activeClassName="landing-header-button-active">Contact</NavLink>
                             <NavLink exact to="/login" className="landing-header-button" activeClassName="landing-header-button-active">Login / Register</NavLink>
                         </div>
@@ -44,7 +45,7 @@ class LandingHome extends React.Component {
 
                         <div className="landing-header-navigation-fullscreen">
                             <NavLink exact to="/home" className="landing-header-button" activeClassName="landing-header-button-active">Home</NavLink>
-                            <NavLink exact to="/home/about" className="landing-header-button" activeClassName="landing-header-button-active">About</NavLink>
+                            <NavLink exact to="/home/contact" className="landing-header-button" activeClassName="landing-header-button-active">Contact</NavLink>
                             <NavLink exact to="/dashboard" className="landing-header-button" id="dashboard-button" activeClassName="landing-header-button-active">Dashboard</NavLink>
                             <NavLink to="/logout" onClick={this.logout} className="landing-header-button" activeClassName="landing-header-button-active">Logout</NavLink>
                         </div>
@@ -63,7 +64,6 @@ class LandingHome extends React.Component {
 
                                 <div className="landing-header-mobile-navigation">
                                     <NavLink exact to="/home" className="landing-header-mobile-button" activeClassName="landing-header-mobile-button-active">Home</NavLink>
-                                    <NavLink exact to="/home/about" className="landing-header-mobile-button" activeClassName="landing-header-mobile-button-active">About</NavLink>
                                     <NavLink exact to="/home/contact" className="landing-header-mobile-button" activeClassName="landing-header-mobile-button-active">Contact</NavLink>
                                     <NavLink exact to="/login" className="landing-header-mobile-button" activeClassName="landing-header-mobile-button-active">Login / Register</NavLink>
                                 </div>
@@ -72,7 +72,7 @@ class LandingHome extends React.Component {
 
                                 <div className="landing-header-mobile-navigation">
                                     <NavLink exact to="/home" className="landing-header-mobile-button" activeClassName="landing-header-mobile-button-active">Home</NavLink>
-                                    <NavLink exact to="/home/about" className="landing-header-mobile-button" activeClassName="landing-header-mobile-button-active">About</NavLink>
+                                    <NavLink exact to="/home/contact" className="landing-header-mobile-button" activeClassName="landing-header-mobile-button-active">Contact</NavLink>
                                     <NavLink exact to="/dashboard" className="landing-header-mobile-button" id="dashboard-button" activeClassName="landing-header-mobile-button-active">Dashboard</NavLink>
                                     <NavLink to="/logout" onClick={this.logout} className="landing-header-mobile-button" activeClassName="landing-header-mobile-button-active">Logout</NavLink>
                                 </div>
@@ -102,7 +102,8 @@ class LandingHome extends React.Component {
                             <div className="landing-page-home-3row">
                                 <div className="landing-page-home-3row-div" style={{background: 'rgb(255,158,0)', background: 'linear-gradient(20deg, #00d2ff 0%, #3a47d5 100%)'}}>
                                     <h2>Explore</h2>
-                                    <p>Find content that YOU like. We have no limitations on content genres or types. Just find what you think will grow.</p>
+                                    <p>Find content that YOU like. We have no limitations on content genres or types. Just find what you think will grow. *See time requirements below*
+                                    </p>
                                 </div>
                                 <div className="landing-page-home-3row-div" style={{background: 'rgb(255,158,0)', background: 'linear-gradient(-30deg, #00d2ff 0%, #3a47d5 100%)'}}>
                                     <h2>Invest</h2>
@@ -115,14 +116,51 @@ class LandingHome extends React.Component {
                             </div>
                             <div className="landing-page-home2-background">
                                 <div className="landing-page-home2-body">
+                                    <h1>How to Invest</h1>
+                                    <li>1. Find a video you love</li>
+                                    <li>2. Quickly Create an Account or Login</li>
+                                    <li>3. Go to our Investor page</li>
+                                    <li>4. Copy and paste the video URL in any form</li>
                                 </div>
+                                <img id="landing-page-home2-investsvg" src={InvestPlant} />
                             </div>
                         </Route>
-                        <Route exact path="/home/about">
+                        <Route exact path="/home/contact">
                             <h1>About page</h1>
                             <h3>djawdid</h3>
                         </Route>
                     </Switch>
+                    <footer className="landing-page-footer">
+                        <div className="landing-page-footer-container">
+                            <div className="landing-page-footer-column">
+                                <h3>Explore:</h3>
+                                { !token ? 
+
+                                <div className="landing-page-footer-nav-div" activeClassName="active-class">
+                                    <NavLink exact to="/home" className="landing-footer-button" activeClassName="active-class">Home</NavLink>
+                                    <NavLink exact to="/home/contact" className="landing-footer-button" activeClassName="active-class">Contact</NavLink>
+                                    <NavLink exact to="/login" className="landing-footer-button" activeClassName="active-class">Login / Register</NavLink>
+                                </div>
+
+                                :
+
+                                <div className="landing-page-footer-nav-div">
+                                    <NavLink exact to="/home" className="landing-footer-button" activeClassName="active-class">Home</NavLink>
+                                    <NavLink exact to="/home/contact" className="landing-footer-button" activeClassName="active-class">Contact</NavLink>
+                                    <NavLink exact to="/dashboard" className="landing-footer-button" activeClassName="active-class">Dashboard</NavLink>
+                                    <NavLink to="/logout" onClick={this.logout} className="landing-footer-button" activeClassName="active-class">Logout</NavLink>
+                                </div>
+
+                                }
+                            </div>
+                            <div className="landing-page-footer-column">
+                                <h3>Contact the owner:</h3>
+                                <p>nathanielredmon@gmail.com</p>
+                                <p>www.nathanielredmon.com</p>
+                            </div>
+                        </div>
+                        <p>Copyright Nathaniel Redmon 2020</p>
+                    </footer>
                 </div>
             </React.Fragment>
         )
