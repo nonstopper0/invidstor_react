@@ -3,6 +3,7 @@ import './Home.css'
 import { withRouter, NavLink, Switch, Route } from 'react-router-dom'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import DeskMan from "./SVG/Asset 2.svg"
+import LightBulbs from './SVG/Asset 1.svg'
 
 class LandingHome extends React.Component {
     constructor() {
@@ -90,6 +91,7 @@ class LandingHome extends React.Component {
                                         :
                                         <NavLink to="/login" className="landing-page-home-top-text-button">Invest now</NavLink>
                                         }
+                                        <img id="landing-page-home-lightbulbs" src={LightBulbs}/>
                                     </div>
                                 </div>
                                 <img id="landing-page-home-desksvg" src={DeskMan}/>
