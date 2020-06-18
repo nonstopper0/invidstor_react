@@ -191,6 +191,22 @@
     border-bottom: 2px solid rgb(235, 235, 235);
 }
 
+#landing-page-home-curve1 {
+    position: absolute;
+    transform: translate(0%, -129%) scale(-1, 1);
+    width: 300px;
+    left: 0px;
+    z-index: 1;
+}
+
+#landing-page-home-curve2 {
+    position: absolute;
+    transform: translate(0%, 118%)rotate(180deg);
+    width: 300px;
+    left: 0px;
+    z-index: 1;
+}
+
 
 
 
