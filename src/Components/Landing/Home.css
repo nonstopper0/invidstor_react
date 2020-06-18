@@ -149,7 +149,7 @@
     justify-content: center;
     flex-wrap: wrap;
     z-index: 1;
-    background: rgb(26, 45, 65);
+    background: rgb(29, 31, 49);
     padding: 50px 0px 50px 0px;
 }
 
@@ -160,12 +160,17 @@
     width: 30%;
     min-width: 280px;
     max-width: 300px;
-    padding: 20px;
-    margin: 10px 1% 10px 1%;
+    padding: 10px;
+    margin: 0px 1% -100px 1%;
     text-align: center;
     -webkit-box-sizing: border-box; 
     -moz-box-sizing: border-box;    
     box-sizing: border-box;     
+    border-bottom: 3px solid rgb(13, 41, 46);
+    border-top: 1px solid white;
+    position: relative;
+    top: -100px;
+    z-index: 2;
 }
 
 .landing-page-home-3row-div p {
@@ -287,12 +292,25 @@
     }
 }
 
+/* the bottom margin on the 3 row doesnt work in this range before mobile and after desktop */
+@media screen and (min-width: 700px) and (max-width: 900px) {
+    .landing-page-home-3row-div {
+        top: 0px;
+        margin: 20px;
+        margin-bottom: 0px;
+    }
+}
+
 @media screen and (max-width: 700px) {
     .landing-header-navigation-fullscreen {
         display: none;
     }
     .landing-header-navigation-mobile-button {
         display: contents;
+    }
+    .landing-page-home-3row-div {
+        top: 0px;
+        margin: 10px 10px 10px 10px;
     }
     .landing-page-home-3row-div p {
         font-size: 14px;
