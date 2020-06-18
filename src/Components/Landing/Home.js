@@ -1,7 +1,9 @@
+
 import React from 'react'
 import './Home.css'
 import { withRouter, NavLink, Switch, Route } from 'react-router-dom'
 import { GiHamburgerMenu } from 'react-icons/gi'
+import Rellax from 'rellax'
 
 import DeskMan from "./SVG/Asset 2.svg"
 import LightBulbs from './SVG/Asset 1.svg'
@@ -13,6 +15,9 @@ class LandingHome extends React.Component {
         this.state = {
             menuOpen: false
         }
+    }
+    componentDidMount() {
+        this.rellax = new Rellax('.rellax')
     }
     logout = (e) => {
         e.preventDefault()
