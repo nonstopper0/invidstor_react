@@ -121,8 +121,9 @@ class LandingHome extends React.Component {
                                     <h1>How to Invest</h1>
                                     <li>1. Find a video you love</li>
                                     <li>2. Quickly Create an Account or Login</li>
-                                    <li>3. Go to our Investor page</li>
-                                    <li>4. Copy and paste the video URL in any form</li>
+                                    <li>3. Go to our user Dashboard page</li>
+                                    <li>4. Copy and paste the video URL</li>
+                                    <li>5. Let our Algorithm return a bet-assessment</li>
                                 </div>
                                 <img id="landing-page-home2-investsvg" src={InvestPlant} />
                             </div>
