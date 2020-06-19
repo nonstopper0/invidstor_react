@@ -116,15 +116,17 @@ class LandingHome extends React.Component {
                                 </div>
                             </div>
                             <div className="landing-page-home2-background">
-                                <div className="landing-page-home2-body">
-                                    <h1>How to Invest</h1>
-                                    <li>1. Find a video you love</li>
-                                    <li>2. Quickly Create an Account or Login</li>
-                                    <li>3. Go to our user Dashboard page</li>
-                                    <li>4. Copy and paste the video URL</li>
-                                    <li>5. Let our Algorithm return a bet-assessment</li>
+                                <div className="landing-page-home2-container">
+                                    <div className="landing-page-home2-body">
+                                        <h1>How to Invest</h1>
+                                        <li>1. Find a video you love</li>
+                                        <li>2. Quickly Create an Account or Login</li>
+                                        <li>3. Go to our user Dashboard page</li>
+                                        <li>4. Copy and paste the video URL</li>
+                                        <li>5. Let our Algorithm return a bet-assessment</li>
+                                    </div>
+                                    <img id="landing-page-home2-investsvg" src={InvestPlant} />
                                 </div>
-                                <img id="landing-page-home2-investsvg" src={InvestPlant} />
                             </div>
                         </Route>
                         <Route exact path="/home/contact">
