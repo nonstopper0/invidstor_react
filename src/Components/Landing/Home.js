@@ -89,11 +89,7 @@ class LandingHome extends React.Component {
                                 <div className="landing-page-home-top-container">
                                     <div className="landing-page-home-top-text-container">
                                         <h2>Invest in content.</h2>
-                                        { token? 
-                                        <NavLink to="/dashboard/invest" className="landing-page-home-top-text-button">Invest now</NavLink>
-                                        :
-                                        <NavLink to="/login" className="landing-page-home-top-text-button">Invest now</NavLink>
-                                        }
+                                        <NavLink to={ token ? "/dashboard/invest" : "/login" }className="landing-page-home-top-text-button">Invest now</NavLink>
                                         <img alt="homepage decoration" id="landing-page-home-lightbulbs" src={LightBulbs}/>
                                     </div>
                                 </div>
@@ -102,8 +98,9 @@ class LandingHome extends React.Component {
                                 <svg className="landing-page-home-curve" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3a63d5" fillOpacity="1" d="M0,128L80,138.7C160,149,320,171,480,165.3C640,160,800,128,960,122.7C1120,117,1280,139,1360,149.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>             
                             </div>
                             <div className="landing-page-home-3row">
-                                <img src={row3Addon} id="landing-page-home-curve1"/>
-                                <img src={row3Addon} id="landing-page-home-curve2"/>
+                                <img src={row3Addon} alt="homecurve" id="landing-page-home-curve1"/>
+                                <img src={row3Addon} alt="homecurve"
+                                 id="landing-page-home-curve2"/>
                                 <div className="landing-page-home-3row-div" style={{background: 'linear-gradient(20deg, #00d2ff 0%, #3a47d5 100%)'}}>
                                     <h2>Explore</h2>
                                     <p>Find content that YOU like. We have no limitations on content genres or types. Just find what you think will grow. *See time requirements below*
