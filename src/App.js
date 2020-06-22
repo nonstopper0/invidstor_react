@@ -10,7 +10,7 @@ import LandingHome from './Components/Landing/Home.js'
 import LogRegister from './Components/LogRegister.js'
 
 //styling
-import './App.css';
+import './App.scss';
 import { IoIosSettings, IoIosHome, IoIosCash, IoIosLogOut } from 'react-icons/io'
 
 require('dotenv').config()

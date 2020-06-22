@@ -1,5 +1,5 @@
 import React from 'react'
-import './LogRegister.css'
+import './LogRegister.scss'
 import { withRouter } from 'react-router-dom'
 
 class LogRegister extends React.Component {
@@ -78,9 +78,9 @@ class LogRegister extends React.Component {
     render() {
         return (
         <React.Fragment>
-            <div className="loginFormPageContainer">
-                <div id="loginTriangle"></div>
-                <div className="loginFormContainer">
+            <div className="login-page-container">
+                <div id="login-triangle"></div>
+                <div className="login-form-container">
                     { this.state.message ? 
                     <h3>{this.state.message}</h3>
                     :
@@ -88,11 +88,11 @@ class LogRegister extends React.Component {
                     }
                     <div>
                     </div>
-                    <div style={{margin: 20, fontSize: 20}}className="leftText">
-                    <h1>InVIDstor</h1>
-                    <p>Investing in content</p>
+                    <div style={{margin: 20, fontSize: 20}}className="login-form-maintext">
+                        <h1>InVIDstor</h1>
+                        <p>Investing in content</p>
                     </div>
-                    <form className="loginForm" onSubmit={this.handleSubmit}>
+                    <form className="login-form" onSubmit={this.handleSubmit}>
                     { this.state.action === "register" ? 
                         <input 
                         placeholder="email"
@@ -114,7 +114,7 @@ class LogRegister extends React.Component {
                             name="password"
                             type="password"
                         />
-                        <button id="submit" type="submit">{this.state.action === 'register' ? 'REGISTER' : 'LOGIN'}</button>
+                        <button id="login-page-submit" type="submit">{this.state.action === 'register' ? 'REGISTER' : 'LOGIN'}</button>
                         { this.state.action === 'login' ?
                         <button onClick={()=>{this.setState({action: 'register', message: ''})}} type="button" className="registerbtn">Dont have an account yet? Register here</button>
                         :
