@@ -190,7 +190,7 @@
 }
 
 .landing-page-home-3row-svg-container {
-    background-color: rgb(0,0,0,.1);
+    background-color: rgba(0,0,0,.1);
     border-radius: 100%;
     margin: 0 auto;
     width: fit-content;
@@ -445,48 +445,55 @@
     /* Mobile header */
     .landing-header-mobile {
         display: contents;
-    }
-    #landing-header-mobile-button {
-        position: fixed;
-        font-size: 25px;
-        margin: 0px;
-        padding: 10px;
-        border: none;
-        background: rgb(255, 255, 255);
-        border-radius: 10px;
-        top: 15px;
-        right: 20px;
-        z-index: 6;
-    }
-    #landing-header-mobile-button-hamburger {
-        color: rgb(99, 99, 99);
-    }
-    .landing-header-mobile-menu {
-        position: fixed;
-        top: 0px;
-        right: 0px;
-        width: 179px;
-        background-color: rgb(24, 41, 58);
-        transition: .6s ease;
-        height: 100vh;
-        padding: 10px;
-        z-index: 5;
-    }
-    .landing-header-mobile-navigation {
-        padding-top: 80px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    .landing-header-mobile-button {
-        text-align: right;
-        color: white;
-        text-decoration: none;
-        font-size: 25px;
-        font-weight: 500;
-        margin-bottom: 20px;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.144);
-        padding: 0px 5px 8px 0px;
+
+        #landing-header-mobile-button {
+            position: fixed;
+            font-size: 25px;
+            margin: 0px;
+            padding: 10px;
+            border: none;
+            background: rgb(255, 255, 255);
+            border-radius: 10px;
+            top: 15px;
+            right: 20px;
+            z-index: 6;
+
+            #landing-header-mobile-button-hamburger {
+                color: rgb(99, 99, 99);
+            }
+        }
+
+        .landing-header-mobile-menu {
+            position: fixed;
+            left: 0px;
+            width: 100%;
+            background-color: rgb(24, 41, 58);
+            transition: .6s ease;
+            height: 300px;
+            padding: 10px;
+            z-index: 5;
+
+            .landing-header-mobile-navigation {
+                padding-top: 80px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .landing-header-mobile-button {
+                    text-align: right;
+                    color: white;
+                    text-decoration: none;
+                    font-size: 25px;
+                    font-weight: 500;
+                    width: 100%;
+                    text-align: center;
+                    margin-bottom: 20px;
+                    border-bottom: 2px solid rgba(255, 255, 255, 0.144);
+                    padding: 0px 5px 8px 0px;
+                }
+            }
+        }
     }
 }
 

@@ -1,6 +1,6 @@
 
 import React from 'react'
-import './Home.css'
+import './Home.scss'
 import { withRouter, NavLink, Switch, Route } from 'react-router-dom'
 import { GiHamburgerMenu } from 'react-icons/gi'
 
@@ -91,7 +91,7 @@ class LandingHome extends React.Component {
 
                         <button onClick={()=>this.setState({menuOpen: !this.state.menuOpen})} id="landing-header-mobile-button"><GiHamburgerMenu id="landing-header-mobile-button-hamburger"/></button>
 
-                        <div className="landing-header-mobile-menu" style={{right: this.state.menuOpen ? '0px' : '-200px'}}>
+                        <div className="landing-header-mobile-menu" style={{top: this.state.menuOpen ? '0px' : '-330px'}}>
 
                             { !token ? 
 

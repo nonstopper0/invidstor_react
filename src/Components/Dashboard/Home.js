@@ -1,5 +1,5 @@
 import React from 'react'
-import './Home.css'
+import './Home.scss'
 
 export default class Dashboard extends React.Component {
     constructor() {
@@ -19,7 +19,7 @@ export default class Dashboard extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <div className="homeDataContainer">
+                <div className="home-container">
                     <h3> Welcome back, </h3>
                 </div>
             </React.Fragment>
