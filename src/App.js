@@ -156,7 +156,7 @@ export default class App extends React.Component {
             </div>
 
             <div className="dashboard-right">
-              <Route exact path="/dashboard/home" component={() => <Dashboard userInfo={this.state.userInfo} /> } />
+              <Route exact path="/dashboard/home" component={() => <Dashboard token={this.state.token} /> } />
               <Route exact path="/dashboard/invest" component={Invest} />
               <Route exact path="/dashboard/profile" component={() => <MyProfile token={this.state.token}/>} />
             </div>
