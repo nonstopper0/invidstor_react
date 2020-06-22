@@ -3,9 +3,9 @@ import { HashRouter, Route, NavLink, Redirect, Switch } from 'react-router-dom'
 
 //components
 import { storeKey, getKey, removeKey } from './Key.js'
-import Dashboard from './Components/Dashboard.js'
-import Invest from './Components/Invest.js'
-import MyProfile from './Components/MyProfile.js'
+import Dashboard from './Components/Dashboard/Home.js'
+import Invest from './Components/Dashboard/Invest.js'
+import MyProfile from './Components/Dashboard/MyProfile.js'
 import LandingHome from './Components/Landing/Home.js'
 import LogRegister from './Components/LogRegister.js'
 
@@ -97,7 +97,7 @@ export default class App extends React.Component {
       if (intervalCount < 30) {
         this.runningAuthentication()
       }
-    }, 30000)
+    }, 60000)
   }
 
   // called from LogRegister.js through props. this sends our token back to app(this component) so we can store it globally.
@@ -138,23 +138,25 @@ export default class App extends React.Component {
           <Route exact path="/login" component={() => <LogRegister login={this.login}/>} />
         </Switch>
 
-        { this.state.token ? 
+        { this.state.token ?
         <Route path="/dashboard">
-          <div className="websiteContainer">
-            <div className="left">
-                <div className="leftText">
+          <div className="dashboard-container">
+
+            <div className="dashboard-left">
+                <div className="dashboard-text">
                   <h1>InVIDstor</h1>
                   <p>Investing in content</p>
                 </div>
-                <header>
-                  <NavLink exact to="/dashboard/home" activeClassName="active"><IoIosHome className="homeIcons" />Dashboard</NavLink>
-                  <NavLink exact to="/dashboard/invest" activeClassName="active"><IoIosCash className="homeIcons" />Invest</NavLink>
-                  <NavLink exact to="/dashboard/profile" activeClassName="active"><IoIosSettings className="homeIcons" />My Profile</NavLink>
+                <header className="dashboard-header">
+                  <NavLink exact to="/dashboard/home" activeClassName="dashboard-header-active"><IoIosHome className="homeIcons" />Dashboard</NavLink>
+                  <NavLink exact to="/dashboard/invest" activeClassName="dashboard-header-active"><IoIosCash className="homeIcons" />Invest</NavLink>
+                  <NavLink exact to="/dashboard/profile" activeClassName="dashboard-header-active"><IoIosSettings className="homeIcons" />My Profile</NavLink>
                   <a onClick={this.logout}><IoIosLogOut class="homeIcons" />Logout</a>
                 </header>
             </div>
-            <div className="right">
-              <Route exact path="/dashboard/home" component={Dashboard} />
+
+            <div className="dashboard-right">
+              <Route exact path="/dashboard/home" component={() => <Dashboard userInfo={this.state.userInfo} /> } />
               <Route exact path="/dashboard/invest" component={Invest} />
               <Route exact path="/dashboard/profile" component={() => <MyProfile token={this.state.token}/>} />
             </div>

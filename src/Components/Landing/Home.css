@@ -72,7 +72,6 @@
     position: relative;
     width: 100%;
     height: 1000px;
-    background: linear-gradient(45deg, #00d2ff 0%, #3a47d5 100%);
     z-index: 1;
 }
 
@@ -99,12 +98,12 @@
     z-index: 9;
     border: none;
     text-decoration: none;
-    color: #00d2ff;
+    color: white;
     font-weight: 700;
     font-size: 20px;
     border-radius: 15px 4px 20px 4px;
     padding: 10px 40px 10px 40px;
-    background-color: white; 
+    background-color: #f9b233;
     margin: 0px;
 }
 
@@ -117,10 +116,16 @@
     transition: 2s ease;
     opacity: .3;
     position: absolute;
-    bottom: 0px;
     width: 110%;
     z-index: 2;
+    bottom: -8%;
 }
+
+#curve1 {
+    width: 200%;
+    left: -20%;
+}
+
 
 #landing-page-home-desksvg {
     position: absolute; 
@@ -140,6 +145,12 @@
 }
 
 
+.landing-page-home-3row-container {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, #3a47d500 110%);
+    text-align: center;
+}
 
 .landing-page-home-3row {
     display: flex;
@@ -149,63 +160,51 @@
     justify-content: center;
     flex-wrap: wrap;
     z-index: 1;
-    background: rgb(14, 24, 34);
-    padding: 50px 0px 50px 0px;
+    padding: 0px 0px 50px 0px;
+}
+
+
+.landing-page-home-3row-div-active{
+    animation: nav-load-in 1s ease;
+    opacity: 1 !important;
 }
 
 .landing-page-home-3row-div {
-    height: 250px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.171);
-    border-radius: 20px;
-    width: 30%;
-    min-width: 280px;
-    max-width: 300px;
+    overflow: hidden;
+    height: 300px;
+    width: 300px;
     padding: 10px;
-    margin: 0px 1% -100px 1%;
+    margin: 0px 2% 0px 2%;
     text-align: center;
     -webkit-box-sizing: border-box; 
     -moz-box-sizing: border-box;    
     box-sizing: border-box;     
-    border-bottom: 3px solid rgb(13, 41, 46);
-    border-top: 1px solid white;
     position: relative;
-    top: -100px;
     z-index: 2;
+    opacity: 0;
 }
 
-.landing-page-home-3row-div p {
-    font-size: 17px;
-    font-weight: 400;
-    color: white;
+.landing-page-home-3row-svg {
+    width: 150px;
+    height: 150px;
 }
 
-.landing-page-home-3row-div h2 {
-    font-size: 25px;
-    letter-spacing: 6px;
-    color: white;
-    width: fit-content;
+.landing-page-home-3row-svg-container {
+    background-color: rgb(0,0,0,.1);
+    border-radius: 100%;
     margin: 0 auto;
-    padding: 10px;
+    width: fit-content;
+    padding: 35px;
+
+}
+
+.landing-page-home-3row-div h3 {
+    letter-spacing: 5px;
+    padding: 10px 0px 10px 0px;
+    color: white;
     font-weight: 800;
-    margin: 5px auto 30px auto;
-    border-bottom: 2px solid rgb(235, 235, 235);
 }
 
-#landing-page-home-curve1 {
-    position: absolute;
-    transform: translate(0%, -129%) scale(-1, 1);
-    width: 300px;
-    left: 0px;
-    z-index: 1;
-}
-
-#landing-page-home-curve2 {
-    position: absolute;
-    transform: translate(0%, 118%)rotate(180deg);
-    width: 300px;
-    left: 0px;
-    z-index: 1;
-}
 
 
 
@@ -214,12 +213,11 @@
 .landing-page-home2-background {
     width: 100%;
     height: fit-content;
-    background: linear-gradient(-45deg, #00d2ff 0%, #3a47d5 100%);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    padding: 100px 0px 100px;
+    padding: 50px 0px 50px;
 }
 
 .landing-page-home2-container {
@@ -228,8 +226,12 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    border-radius: 70px 4px 70px 4px;
-    background-color: rgb(0,0,0,.3)
+    opacity: 0;
+}
+
+.landing-page-home2-container-active {
+    animation: nav-load-in 2s ease;
+    opacity: 1 !important;
 }
 
 .landing-page-home2-body {
@@ -262,9 +264,67 @@
 
 
 
+.landing-page-home3-container {
+    height: fit-content;
+    max-width: 1300px;
+    margin: 0 auto;
+    opacity: 0;
+}
+
+.landing-page-home3-container-active {
+    opacity: 1 !important;
+    animation: 2s load-in-left ease;
+}
+
+.landing-page-home3-body {
+    margin: 40px;
+    color: white;
+    padding: 50px;
+    max-width: 800px;
+    background-color: rgba(51, 51, 51, 0.253);
+    border-radius: 10px;
+}
+
+
+
+
+.landing-page-home4-container {
+    height: fit-content;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0;
+    
+}
+
+.landing-page-home4-container-active {
+    opacity: 1 !important;
+    animation: 2s load-in-right ease;
+}
+
+.landing-page-home4-body {
+    margin: 40px;
+    color: white;
+    padding: 50px;
+    max-width: 800px;
+    background-color: rgba(51, 51, 51, 0.253);
+    border-radius: 10px;
+}
+
+.landing-page-home4-body h1 {
+    text-align: right;
+}
+
+
+
+
+
+
 .landing-page-footer {
-    color: grey;
+    color: White;
     width: 100%;
+    background-color: rgb(24, 24, 34);
     text-align: center;
 }
 
@@ -278,8 +338,9 @@
 }
 
 .landing-page-footer > p {
-    color: rgb(66, 66, 66);
-    margin: 100px 0px 100px;
+    color: WHITE;
+    padding: 100px;
+    margin: 0px;
 }
 
 .landing-page-footer-column {
@@ -290,9 +351,9 @@
 }
 
 .landing-page-footer-column h3 {
-    border-bottom: 2px solid rgba(255, 255, 255, 0.212);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.418);
     text-align: left;
-    padding-left: 10px;
+    padding-left: 4px;
     padding-bottom: 5px;
 }
 
@@ -306,15 +367,15 @@
 
 
 .landing-footer-button {
-    color: rgb(185, 185, 185);
+    color: white;
     text-decoration: none;
     margin: 3px;
     
 }
 
 .active-class {
-    color: rgb(65, 126, 167);
-    font-weight: 500;
+    color: rgb(255, 255, 255);
+    font-weight: 900;
 }
 
 @media screen and (min-height: 1440px) {
@@ -341,12 +402,7 @@
     }
     .landing-page-home-3row-div {
         top: 0px;
-        margin: 10px 10px 10px 10px;
-        max-width: none;
-        width: 90%;
-    }
-    .landing-page-home-3row-div p {
-        font-size: 16px;
+        margin: 10px 0px 10px 0px;
     }
     .landing-page-home-background {
         height: 100vh;
@@ -362,6 +418,9 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%)
+    }
+    .landing-page-home4-body h1 {
+        text-align: left;
     }
     .landing-page-home-top-text-container:hover {
         transform: translate(-50%, -50%)
@@ -445,5 +504,26 @@
     from {
         transform: translate(100px);
     } to {
+    }
+}
+
+@keyframes nav-load-in {
+    from {
+        opacity: 0;
+        transform: translate(0%, -30%);
+    }
+}
+
+@keyframes load-in-left {
+    from {
+        opacity: 0;
+        transform: translate(-20%, 0%)
+    }
+}
+
+@keyframes load-in-right {
+    from {
+        opacity: 0;
+        transform: translate(20%, 0%)
     }
 }

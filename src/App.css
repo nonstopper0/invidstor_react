@@ -1,21 +1,23 @@
-.websiteContainer {
+.dashboard-container {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
     width: 100%;
     height: 100%;
+    background-color: rgb(14, 24, 34);
 }
 
-.left {
+.dashboard-left {
     width: 20%;
     max-width: 300px;
     min-width: 200px;
     height: 100vh;
     font-size: 20px;
     background: rgb(27, 47, 66);
+    animation: left-load-in 2s ease;
 }
 
-.leftText h1 {
+.dashboard-text h1 {
     margin: 0px;
     background: linear-gradient(45deg, #00d2ff 0%, #3a47d5 100%);
     -webkit-background-clip: text;
@@ -23,17 +25,17 @@
     -webkit-text-fill-color: transparent;
 }
 
-.leftText {
+.dashboard-text {
     margin-top: 15px;
     text-align: center;
     color: white;
 }
 
-.leftText p {
+.dashboard-text p {
     margin: 0px;
 }
 
-header {
+.dashboard-header {
     margin-top: 50px;
     display: flex;
     flex-direction: column;
@@ -41,7 +43,7 @@ header {
     justify-content: space-evenly;
 }
 
-header a {
+.dashboard-header a {
     transition: .5s ease;
     display: flex;
     justify-content: center;
@@ -52,14 +54,14 @@ header a {
     width: 100%;
 }
 
-.active {
+.dashboard-header-active {
     font-weight: bold;
     animation: clipcircle .5s ease-out;
     background-color: rgb(14, 24, 34) !important;
     height: 60px;
 }
 
-.active .homeIcons {
+.dashboard-header-active .homeIcons {
     font-size: 25px;
     box-shadow: none;
     color: rgb(24, 158, 196)
@@ -69,7 +71,7 @@ header a:hover {
     background-color: rgb(24, 41, 58);
 }
 
-.right {
+.dashboard-right {
     display: flex;
     flex: 1;
 }
@@ -91,21 +93,27 @@ header a:hover {
     }
 }
 
+@keyframes left-load-in {
+    from {
+        transform: translate(-100%, 0)
+    }
+}
+
 
 @media screen and (max-width: 700px) {
-    .websiteContainer {
+    .dashboard-container {
         flex-wrap: nowrap;
         align-items: none;
     }
-    header {
+    .dashboard-header {
         margin-top: 30px;
         font-size: 20px;
     }
-    .left {
+    .dashboard-left {
         width: 0%;
         min-width: 0px;
     }
-    .left > * {
+    .dashboard-left > * {
         display: none
     }
 }
