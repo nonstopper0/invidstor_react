@@ -116,9 +116,9 @@ class LogRegister extends React.Component {
                         />
                         <button id="login-page-submit" type="submit">{this.state.action === 'register' ? 'REGISTER' : 'LOGIN'}</button>
                         { this.state.action === 'login' ?
-                        <button onClick={()=>{this.setState({action: 'register', message: ''})}} type="button" className="registerbtn">Dont have an account yet? Register here</button>
+                        <button onClick={()=>{this.setState({action: 'register', message: ''})}} type="button" className="login-page-registerbutton">Dont have an account yet? Register here</button>
                         :
-                        <button onClick={()=>{this.setState({action: 'login', message: ''})}} type="button" className="registerbtn">Already have an account? Sign in here</button>
+                        <button onClick={()=>{this.setState({action: 'login', message: ''})}} type="button" className="login-page-registerbutton">Already have an account? Sign in here</button>
                         }
                     </form>
                 </div>
