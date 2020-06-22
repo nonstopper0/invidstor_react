@@ -15,75 +15,78 @@
     font-size: 20px;
     background: rgb(27, 47, 66);
     animation: left-load-in 2s ease;
+
+    .dashboard-text {
+        margin-top: 15px;
+        text-align: center;
+        color: white;
+
+        h1 {
+            margin: 0px;
+            background: linear-gradient(45deg, #00d2ff 0%, #3a47d5 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            margin: 0px;
+        }
+    }
+
+
+    .dashboard-header {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-evenly;
+
+        a {
+            transition: .5s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            color: rgb(219, 219, 219);
+            text-decoration: none;
+            width: 100%;
+
+            &:hover {
+                background-color: rgb(24, 41, 58);
+            }
+        }
+
+        .dashboard-icons {
+            color: grey;
+            border-radius: 100%;
+            padding: 8px;
+            position: absolute;
+            left: 10px;
+            font-size: 17px;
+        }
+
+        &-active {
+            font-weight: bold;
+            animation: clipcircle .5s ease-out;
+            background-color: rgb(14, 24, 34) !important;
+            height: 60px;
+
+            .dashboard-icons {
+                font-size: 25px;
+                box-shadow: none;
+                color: rgb(24, 158, 196)
+            }
+        }
+    }
 }
 
-.dashboard-text h1 {
-    margin: 0px;
-    background: linear-gradient(45deg, #00d2ff 0%, #3a47d5 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.dashboard-text {
-    margin-top: 15px;
-    text-align: center;
-    color: white;
-}
-
-.dashboard-text p {
-    margin: 0px;
-}
-
-.dashboard-header {
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: space-evenly;
-}
-
-.dashboard-header a {
-    transition: .5s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    color: rgb(219, 219, 219);
-    text-decoration: none;
-    width: 100%;
-}
-
-.dashboard-header-active {
-    font-weight: bold;
-    animation: clipcircle .5s ease-out;
-    background-color: rgb(14, 24, 34) !important;
-    height: 60px;
-}
-
-.dashboard-header-active .homeIcons {
-    font-size: 25px;
-    box-shadow: none;
-    color: rgb(24, 158, 196)
-}
-
-header a:hover {
-    background-color: rgb(24, 41, 58);
-}
 
 .dashboard-right {
     display: flex;
     flex: 1;
 }
 
-.homeIcons {
-    color: grey;
-    border-radius: 100%;
-    padding: 8px;
-    position: absolute;
-    left: 10px;
-    font-size: 17px;
-}
 
 @keyframes clipcircle {
     from {
