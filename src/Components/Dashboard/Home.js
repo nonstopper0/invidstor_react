@@ -13,13 +13,16 @@ export default class Dashboard extends React.Component {
     }
     getUserData = async (e) => {
         await fetch(`${process.env.REACT_APP_NODE_URL}/user/info/data?sessionID=${this.props.token}`)
-            .then(response => response.json()) 
-            .then(json => console.log(json))
+            .then(response => {
+                console.log(response)
+                return response.json()
+            }) 
+            .then(json => console.log(json, 'data'))
     }
     render() {
         return (
             <React.Fragment>
-                <div className="home-container">
+                <div className="dashboard-home-container">
                     <h3> Welcome back, </h3>
                 </div>
             </React.Fragment>

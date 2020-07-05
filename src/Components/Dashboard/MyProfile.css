@@ -1,5 +1,5 @@
 .myProfileRow {
-    color: orange;
+    color: #00d2ff;
     border-bottom: 1px solid rgba(255,255,255,.1);
 }
 
@@ -18,7 +18,7 @@
 }
 
 .myProfileEditingRow {
-    color: orange;
+    color: #00d2ff;
     display: flex;
     border-bottom: 1px solid rgba(255,255,255,.1);
 }
@@ -48,5 +48,5 @@
     background-color: rgba(0,0,0,.1);
     padding: 10px 30px 10px 30px;
     border: none;
-    color: orange;
+    color: #00d2ff
 }

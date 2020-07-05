@@ -1,6 +1,6 @@
 import React from 'react'
 import MakeBet from './MakeBet.js'
-import './Invest.css'
+import './Invest.scss'
 import { IoMdPlay } from 'react-icons/io'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 
@@ -79,7 +79,7 @@ export default class Home extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <div className="investDataContainer">
+                <div className="dashboard-invest-container">
                     
                     { !this.state.makeBetScreen ? 
 
@@ -87,7 +87,7 @@ export default class Home extends React.Component {
 
                             { !this.state.loading ?
 
-                            <div className="investInputContainer">
+                            <div className="dashboard-invest-input-container">
                                 <h2>INVESTOR</h2>
                                 <p>Paste the video url below to begin</p>
                                 <form onSubmit={this.handleSubmit}>
@@ -105,8 +105,8 @@ export default class Home extends React.Component {
 
                             :
 
-                            <div className="investInputContainer">
-                                <AiOutlineLoading3Quarters id="inputSpinner" />
+                            <div className="dashboard-invest-input-container">
+                                <AiOutlineLoading3Quarters id="dashboard-invest-spinner" />
                             </div>
 
                             }

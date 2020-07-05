@@ -1,0 +1,142 @@
+@import "../../SCSS/media";
+
+.dashboard-invest-container {
+    position: relative;
+    width: 90%;
+    height: 90%;
+    margin: auto auto;
+    background: rgba(27, 47, 66, 0.418);
+    border-radius: 20px;
+
+}
+
+#dashboard-invest-spinner {
+    color: white;
+    font-size: 50px;
+    animation: 1s spinner infinite linear ;
+}
+
+#inputHelp {
+    color: white;
+    font-size: 30px;
+}
+
+.dashboard-invest-input-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    animation: fadeIn 1s ease;
+
+    form {
+
+        display: flex;
+        align-items: center;
+
+        @include phone {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        button {
+            color: white;
+            background: linear-gradient(45deg, #00d2ff 0%, #3a47d5 100%);
+            border-radius: 100%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+        }
+    }
+
+    h2 {
+
+        margin: 5px;
+        padding: 0px 40px 0px 40px;
+        border-radius: 30px;
+        color: white;
+        font-size: 70px;
+        background: linear-gradient(45deg, #00d2ff 0%, #3a47d5 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    
+        @include phone {
+            font-size: 35px;
+            margin: 0px;
+        }
+
+    }
+
+    h6 {
+        color: rgb(160, 160, 160);
+        margin: 5px;
+        text-align: center;
+        font-size: 12px;
+    }
+
+    p {
+
+        font-size: 20px;
+        color: white;
+        margin: 0px;
+        margin-bottom: 20px;
+        text-align: center;
+
+        button {
+            background: none;
+            border: none;
+        }
+    }
+
+    input {
+
+        background: rgba(0, 0, 0, 0.103);
+        color: white;
+        font-size: 20px;
+        border: none;
+        border: 1px solid rgb(27, 47, 66);
+        padding: 10px;
+        margin: 10px;
+        width: 400px;
+        text-align: center;
+        border-radius: 30px;
+
+        &:focus {
+            outline: none;  
+        }
+
+        @include phone {
+            margin: 0px;
+            margin-bottom: 20px;
+            width: 100%;
+            font-size: 14px;
+        }
+    }
+} 
+
+
+
+@keyframes spinner {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+}
+
