@@ -11,203 +11,190 @@
     animation: InitialLoad 2s ease;
 }
 
-.dashboard-bet-top-container {
+.dashboard-bet-thumbnail-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+        font-size: 20px;
+        margin: 5px;
+        width: 100%;
+
+        @include phone {
+            font-size: 15px;
+        }
+    }
+
+    p {
+        margin: 10px 0px;
+        font-weight: bold;
+        width: fit-content;
+        color: #00d2ff;
+        background-color: rgba(0, 0, 0, 0.116);
+        border-radius: 5px;
+        padding: 5px;
+        margin: 10px auto;
+        
+    }
+    
+    #dashboard-bet-thumbnail {
+        object-fit: cover;
+        height: 140px;
+        width: 250px;
+        margin: 20px;
+        min-height: 140px;
+        border: 1px solid white;
+        border-radius: 10px;
+    }
+}
+
+.dashboard-bet-bottom-container {
     display: flex;
     flex-direction: column;
     padding: 20px;
     text-align: left;
     border-radius: 30px;
-    
 
-    .dashboard-bet-thumbnail-container {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        h2 {
-            font-size: 20px;
-            margin: 5px;
-            width: 100%;
-
-            @include phone {
-                font-size: 15px;
-            }
-        }
-    
-        p {
-            margin: 10px 0px;
-            font-weight: bold;
-            width: fit-content;
-            color: #00d2ff;
-            background-color: rgba(0, 0, 0, 0.116);
-            border-radius: 5px;
-            padding: 5px;
-            margin: 10px auto;
-            
-        }
-        
-        #dashboard-bet-thumbnail {
-            object-fit: cover;
-            height: 140px;
-            width: 250px;
-            margin: 20px;
-            min-height: 140px;
-            border: 1px solid white;
-            border-radius: 10px;
-        }
+    @include phone {
+      min-width: 100%;
     }
 
     h3 {
-        width: 100%;
-        text-align: center;
-        padding: 10px 0px;
-        margin: 0px 0px;
-        background: linear-gradient(80deg, #00d2ff 0%, #3a47d5 100%);
+      width: 100%;
+      text-align: center;
+      padding: 15px 0px;
+      margin: 0px 0px;
     }
 
-    .dashboard-bet-bottom-container {
-
-        border: 2px solid rgba(255, 255, 255, 0.068);
-        overflow: hidden;
-
-        .dashboard-bet-stats-container {
-            min-width: 500px;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.185);
-            margin: 0px;
-            
-            @include phone {
-                min-width: 0px;
-            }
-    
-            p {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin: 12px;
-                font-weight: bold;
-                letter-spacing: 1.2px;
-    
-                @include phone {
-                    font-size: 12px;
-                    letter-spacing: 0px;
-                }
-            }
+    .dashboard-bet-stats-container {
+        min-width: 500px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.185);
+        margin: 0px;
+        border-radius: 30px;
+        
+        @include phone {
+            min-width: 0px;
         }
-
-        .dashboard-bet-slider-container {
-            height: 50px;
+      
+        p {
             display: flex;
-            align-content: center;
             justify-content: center;
-            background: linear-gradient(80deg, #00d2ff 0%, #3a47d5 100%);
-        }
+            align-items: center;
+            margin: 12px;
+            font-weight: bold;
+            letter-spacing: 1.2px;
 
-        input[type=range].dashboard-bet-slider-button {
+            @include phone {
+                font-size: 12px;
+                letter-spacing: 0px;
+            }
+        }
+    }
+    
+    .dashboard-bet-slider-container {
+        height: 50px;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        
+        .dashboard-bet-slider-button {
             width: 90%;
             margin: 3.3px 0;
             background-color: transparent;
             -webkit-appearance: none;
-          }
-          input[type=range].dashboard-bet-slider-button:focus {
-            outline: none;
-          }
-          input[type=range].dashboard-bet-slider-button::-webkit-slider-runnable-track {
-            background: rgb(34, 34, 34);
-            border: 0;
-            border-radius: 25px;
-            width: 100%;
-            height: 12px;
-            cursor: pointer;
-          }
-          input[type=range].dashboard-bet-slider-button::-webkit-slider-thumb {
-            margin-top: -3.3px;
-            width: 33px;
-            height: 20px;
-            background: #ffffff;
-            border-radius: 50px;
-            cursor: pointer;
-            -webkit-appearance: none;
-            transition: .3s; 
-          }
-          input[type=range].dashboard-bet-slider-button:hover::-webkit-slider-thumb {
-            background: #00aeff;
-          }
-          input[type=range].dashboard-bet-slider-button:focus::-webkit-slider-runnable-track {
-            background: rgb(34, 34, 34);
-          }
-          input[type=range].dashboard-bet-slider-button::-moz-range-track {
-            background: rgb(34, 34, 34);
-            border: 0;
-            border-radius: 25px;
-            width: 100%;
-            height: 12px;
-            transition: .3s; 
-            cursor: pointer;
-          }
-          input[type=range].dashboard-bet-slider-button::-moz-range-thumb {
-            width: 33px;
-            height: 20px;
-            background: #ffffff;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: .3s;
-          }
-          input[type=range].dashboard-bet-slider-button:hover::-moz-range-thumb {
-            background: #00aeff;
-          }
-          input[type=range].dashboard-bet-slider-button::-ms-track {
-            background: transparent;
-            border-color: transparent;
-            border-width: 4.3px 0;
-            color: transparent;
-            width: 100%;
-            height: 8.4px;
-            cursor: pointer;
-          }
-          input[type=range].dashboard-bet-slider-button::-ms-fill-lower {
-            background: #000000;
-            border: 0;
-            border-radius: 50px;
-          }
-          input[type=range].dashboard-bet-slider-button::-ms-fill-upper {
-            background: rgba(0, 0, 0, 0.2);
-            border: 0;
-            border-radius: 50px;
-          }
-          input[type=range].dashboard-bet-slider-button::-ms-thumb {
-            width: 33px;
-            height: 15px;
-            background: #ffffff;
-            border: 1.1px solid rgba(0, 0, 0, 0.4);
-            border-radius: 50px;
-            cursor: pointer;
-            margin-top: 0px;
-            /*Needed to keep the Edge thumb centred*/
-          }
-          input[type=range].dashboard-bet-slider-button:focus::-ms-fill-lower {
-            background: rgba(0, 0, 0, 0.2);
-          }
-          input[type=range].dashboard-bet-slider-button:focus::-ms-fill-upper {
-            background: #707070;
-          }
-          /*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
-          how to remove the virtical space around the range input in IE*/
-          @supports (-ms-ime-align:auto) {
-            /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
-            input[type=range].dashboard-bet-slider-button {
-              margin: 0;
-              /*Edge starts the margin from the thumb, not the track as other browsers do*/
+            
+            &:focus {
+              outline: none;
             }
-          }
-          
-    }
-}   
-
+            &::-webkit-slider-runnable-track {
+              background: rgb(168, 168, 168);
+              border: 0;
+              border-radius: 25px;
+              width: 100%;
+              height: 12px;
+              cursor: pointer;
+            }
+            &::-webkit-slider-thumb {
+              margin-top: -3.3px;
+              width: 33px;
+              height: 20px;
+              background: #ffffff;
+              border-radius: 50px;
+              cursor: pointer;
+              -webkit-appearance: none;
+              transition: .3s; 
+            }
+            &:hover::-webkit-slider-thumb {
+              background: #00aeff;
+              transform: scale(1.5);
+            }
+            &:focus::-webkit-slider-runnable-track {
+              background: rgb(185, 185, 185);
+            }
+            &::-moz-range-track {
+              background: rgb(199, 199, 199);
+              border: 0;
+              border-radius: 25px;
+              width: 100%;
+              height: 12px;
+              transition: .3s; 
+              cursor: pointer;
+            }
+            &::-moz-range-thumb {
+              width: 33px;
+              height: 20px;
+              background: #ffffff;
+              border-radius: 50px;
+              cursor: pointer;
+              transition: .3s;
+            }
+            &:hover::-moz-range-thumb {
+              background: #00aeff;
+            }
+            &::-ms-track {
+              background: transparent;
+              border-color: transparent;
+              border-width: 4.3px 0;
+              color: transparent;
+              width: 100%;
+              height: 8.4px;
+              cursor: pointer;
+            }
+            &::-ms-fill-lower {
+              background: #cecece;
+              border: 0;
+              border-radius: 50px;
+            }
+            &::-ms-fill-upper {
+              background: rgba(0, 0, 0, 0.2);
+              border: 0;
+              border-radius: 50px;
+            }
+            &::-ms-thumb {
+              width: 33px;
+              height: 15px;
+              background: #ffffff;
+              border: 1.1px solid rgba(0, 0, 0, 0.4);
+              border-radius: 50px;
+              cursor: pointer;
+              margin-top: 0px;
+              /*Needed to keep the Edge thumb centred*/
+            }
+            &:focus::-ms-fill-lower {
+              background: rgba(173, 173, 173, 0.2);
+            }
+            &:focus::-ms-fill-upper {
+              background: #a8a8a8;
+            }
+        }
+    }  
+}
 @keyframes InitialLoad {
     from {
         opacity: 0;

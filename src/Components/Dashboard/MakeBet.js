@@ -7,18 +7,31 @@ export default class MakeBet extends React.Component {
     constructor() {
         super()
         this.state = {
-            value: 50,
+            value: 0,
+            betViews: 0,
+            betLikes: 0,
+            betDislikes: 0,
         }
-    }
-    componentDidMount() {
-        
     }
     numberWithCommas = (x) => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     updateValue = (e) => {
-        this.setState({value: e.target.value})
+        // middle value is 50, at 50 the number should be equal to the average
+        const multiplicationValue = parseFloat(`${e.target.value / 50}`)
+        const newViews = (multiplicationValue * this.props.data.betAssesment.averageViews).toFixed(0)
+        const newLikes = (multiplicationValue * this.props.data.betAssesment.averageLikes).toFixed(0)
+        const newDislikes = (multiplicationValue * this.props.data.betAssesment.averageDislikes).toFixed(0)
+
+
+        this.setState({
+            value: e.target.value,
+            betViews: newViews,
+            betLikes: newLikes,
+            betDislikes: newDislikes
+        })
     }
+
     render() {
         const {
             generalData, 
@@ -28,33 +41,37 @@ export default class MakeBet extends React.Component {
         return (
             <React.Fragment>
                 <div className="dashboard-bet-container">
-                    <div className="dashboard-bet-top-container">
-                        <div className="dashboard-bet-thumbnail-container">
-                            <img alt="video thumbnail" id="dashboard-bet-thumbnail" src={generalData.thumbnails.default.url}/>
-                            <span>
-                                <h2>{generalData.title}</h2>
-                                <p>By: {generalData.channelTitle}</p>
-                            </span>
+                    <div className="dashboard-bet-thumbnail-container">
+                        <img alt="video thumbnail" id="dashboard-bet-thumbnail" src={generalData.thumbnails.default.url}/>
+                        <span>
+                            <h2>{generalData.title}</h2>
+                            <p>By: {generalData.channelTitle}</p>
+                        </span>
+                    </div>
+                    <div className="dashboard-bet-bottom-container">
+                        <h3>Video Statistics</h3>
+                        <div className="dashboard-bet-stats-container">
+                            <p><FaRegEye />{this.numberWithCommas(videoStatistics.viewCount)}</p>
+                            <p><FaRegThumbsUp />{this.numberWithCommas(videoStatistics.likeCount)}</p>
+                            <p><FaRegThumbsDown />{this.numberWithCommas(videoStatistics.dislikeCount)}</p>
                         </div>
-                        <div className="dashboard-bet-bottom-container">
-                            <h3>Video Statistics</h3>
-                            <div className="dashboard-bet-stats-container">
-                                <p><FaRegEye />{this.numberWithCommas(videoStatistics.viewCount)}</p>
-                                <p><FaRegThumbsUp />{this.numberWithCommas(videoStatistics.likeCount)}</p>
-                                <p><FaRegThumbsDown />{this.numberWithCommas(videoStatistics.dislikeCount)}</p>
-                            </div>
-                            <h3>Channel Average</h3>
-                            <div className="dashboard-bet-stats-container">
-                                <p><FaRegEye />{this.numberWithCommas(betAssesment.averageViews)}</p>
-                                <p><FaRegThumbsUp />{this.numberWithCommas(betAssesment.averageLikes)}</p>
-                                <p><FaRegThumbsDown />{this.numberWithCommas(betAssesment.averageDislikes)}</p>
-                            </div>
-                            <div className="dashboard-bet-slider-container">
-                                <input type="range" min="0" max="100" value={this.state.value} onChange={this.updateValue} step="1" className="dashboard-bet-slider-button"/>
-                            </div>
+                        <h3>Channel Average</h3>
+                        <div className="dashboard-bet-stats-container">
+                            <p><FaRegEye />{this.numberWithCommas(betAssesment.averageViews)}</p>
+                            <p><FaRegThumbsUp />{this.numberWithCommas(betAssesment.averageLikes)}</p>
+                            <p><FaRegThumbsDown />{this.numberWithCommas(betAssesment.averageDislikes)}</p>
+                        </div>
+                        <h3>User Bet</h3>
+                        <div className="dashboard-bet-stats-container">
+                            <p><FaRegEye />{this.numberWithCommas(this.state.betViews)}</p>
+                            <p><FaRegThumbsUp />{this.numberWithCommas(this.state.betLikes)}</p>
+                            <p><FaRegThumbsDown />{this.numberWithCommas(this.state.betDislikes)}</p>
+                        </div>
+                        <div className="dashboard-bet-slider-container">
+                            <input type="range" min="0" max="100" value={this.state.value} onChange={this.updateValue} step="1" className="dashboard-bet-slider-button"/>
                         </div>
                     </div>
-                </div>
+                    </div>
             </React.Fragment>
         )
     }
