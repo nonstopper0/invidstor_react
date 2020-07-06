@@ -1,0 +1,109 @@
+@import '../../SCSS/media';
+
+.dashboard-bet-container {
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: InitialLoad 2s ease;
+}
+
+.dashboard-bet-top-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    text-align: left;
+    border-radius: 30px;
+    
+
+    .dashboard-bet-thumbnail-container {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h2 {
+            font-size: 20px;
+            margin: 5px;
+            width: 100%;
+
+            @include phone {
+                font-size: 15px;
+            }
+        }
+    
+        p {
+            margin: 10px 0px;
+            font-weight: bold;
+            width: fit-content;
+            color: #00d2ff;
+            background-color: rgba(0, 0, 0, 0.116);
+            border-radius: 5px;
+            padding: 5px;
+            margin: 10px auto;
+            
+        }
+        
+        #dashboard-bet-thumbnail {
+            object-fit: cover;
+            height: 140px;
+            width: 250px;
+            margin: 20px;
+            min-height: 140px;
+            border: 1px solid white;
+            border-radius: 10px;
+        }
+    }
+
+    h3 {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0px;
+        margin: 0px 0px;
+        background: linear-gradient(80deg, #00d2ff 0%, #3a47d5 100%);
+    }
+
+    .dashboard-bet-bottom-container {
+
+        border: 2px solid rgba(255, 255, 255, 0.068);
+        overflow: hidden;
+
+        .dashboard-bet-stats-container {
+            min-width: 500px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.185);
+            margin: 0px;
+            
+            @include phone {
+                min-width: 0px;
+            }
+    
+            p {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 12px;
+                font-weight: bold;
+                letter-spacing: 1.2px;
+    
+                @include phone {
+                    font-size: 12px;
+                    letter-spacing: 0px;
+                }
+            }
+        }
+    }
+}   
+
+@keyframes InitialLoad {
+    from {
+        opacity: 0;
+        transform: translateY(-100px)
+    } 
+}

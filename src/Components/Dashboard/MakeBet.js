@@ -1,5 +1,5 @@
 import React from 'react'
-import './MakeBet.css'
+import './MakeBet.scss'
 import { FaRegThumbsUp, FaRegThumbsDown, FaRegEye } from 'react-icons/fa'
 
 export default class MakeBet extends React.Component {
@@ -20,15 +20,28 @@ export default class MakeBet extends React.Component {
         } = this.props.data
         return (
             <React.Fragment>
-                <div className="makeBetContainer">
-                    <div className="makeBetTopContainer">
-                        <img alt="video thumbnail" className="makeBetThumbnail" src={generalData.thumbnails.default.url}/>
-                        <h2>{generalData.title}</h2>
-                        <p>By: {generalData.channelTitle}</p>
-                        <div className="makeBetStatsContainer">
-                            <p><FaRegEye />{this.numberWithCommas(videoStatistics.viewCount)}</p>
-                            <p><FaRegThumbsUp />{this.numberWithCommas(videoStatistics.likeCount)}</p>
-                            <p><FaRegThumbsDown />{this.numberWithCommas(videoStatistics.dislikeCount)}</p>
+                <div className="dashboard-bet-container">
+                    <div className="dashboard-bet-top-container">
+                        <div className="dashboard-bet-thumbnail-container">
+                            <img alt="video thumbnail" id="dashboard-bet-thumbnail" src={generalData.thumbnails.default.url}/>
+                            <span>
+                                <h2>{generalData.title}</h2>
+                                <p>By: {generalData.channelTitle}</p>
+                            </span>
+                        </div>
+                        <div className="dashboard-bet-bottom-container">
+                            <h3>Video Statistics</h3>
+                            <div className="dashboard-bet-stats-container">
+                                <p><FaRegEye />{this.numberWithCommas(videoStatistics.viewCount)}</p>
+                                <p><FaRegThumbsUp />{this.numberWithCommas(videoStatistics.likeCount)}</p>
+                                <p><FaRegThumbsDown />{this.numberWithCommas(videoStatistics.dislikeCount)}</p>
+                            </div>
+                            <h3>Channel Average</h3>
+                            <div className="dashboard-bet-stats-container">
+                                <p><FaRegEye />{this.numberWithCommas(betAssesment.averageViews)}</p>
+                                <p><FaRegThumbsUp />{this.numberWithCommas(betAssesment.averageLikes)}</p>
+                                <p><FaRegThumbsDown />{this.numberWithCommas(betAssesment.averageDislikes)}</p>
+                            </div>
                         </div>
                     </div>
                     <div class="slideContainer">
