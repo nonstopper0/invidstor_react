@@ -1,16 +1,23 @@
 import React from 'react'
 import './MakeBet.scss'
 import { FaRegThumbsUp, FaRegThumbsDown, FaRegEye } from 'react-icons/fa'
+import { AiOutlinePullRequest } from 'react-icons/ai'
 
 export default class MakeBet extends React.Component {
     constructor() {
         super()
         this.state = {
-            
+            value: 50,
         }
+    }
+    componentDidMount() {
+        
     }
     numberWithCommas = (x) => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    updateValue = (e) => {
+        this.setState({value: e.target.value})
     }
     render() {
         const {
@@ -42,10 +49,10 @@ export default class MakeBet extends React.Component {
                                 <p><FaRegThumbsUp />{this.numberWithCommas(betAssesment.averageLikes)}</p>
                                 <p><FaRegThumbsDown />{this.numberWithCommas(betAssesment.averageDislikes)}</p>
                             </div>
+                            <div className="dashboard-bet-slider-container">
+                                <input type="range" min="0" max="100" value={this.state.value} onChange={this.updateValue} step="1" className="dashboard-bet-slider-button"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="slideContainer">
-                        <input type="range" onChange={value => this.setState({slider: value})} min="1" max="100" value='50' class="slider"/>
                     </div>
                 </div>
             </React.Fragment>
