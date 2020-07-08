@@ -55,7 +55,7 @@ export default class MakeBet extends React.Component {
                             <p><FaRegThumbsUp />{this.numberWithCommas(videoStatistics.likeCount)}</p>
                             <p><FaRegThumbsDown />{this.numberWithCommas(videoStatistics.dislikeCount)}</p>
                         </div>
-                        <h3>Channel Average</h3>
+                        <h3>Our Bet</h3>
                         <div className="dashboard-bet-stats-container">
                             <p><FaRegEye />{this.numberWithCommas(betAssesment.averageViews)}</p>
                             <p><FaRegThumbsUp />{this.numberWithCommas(betAssesment.averageLikes)}</p>

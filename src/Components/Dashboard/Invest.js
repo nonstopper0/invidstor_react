@@ -1,8 +1,10 @@
 import React from 'react'
 import MakeBet from './MakeBet.js'
+import Modal from '../Modal.js'
 import './Invest.scss'
 import { IoMdPlay } from 'react-icons/io'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
+import { FaRegQuestionCircle } from 'react-icons/fa'
 
 export default class Home extends React.Component {
     constructor() {
@@ -12,7 +14,13 @@ export default class Home extends React.Component {
             loading: false,
             message: 'Video URL',
             makeBetScreen: false,
+            modal: false,
         }
+    }
+    openModal = (e) => {
+        this.setState({
+            modal: !this.state.modal
+        })
     }
     urlParser = (url) => {
         try {
@@ -83,11 +91,13 @@ export default class Home extends React.Component {
                     
                     { !this.state.makeBetScreen ? 
 
-                        <div>
+                        <div> 
+                            <button onClick={this.openModal} id="dashboard-invest-help-button"><FaRegQuestionCircle id="dashboard-invest-help-icon" /></button>
 
                             { !this.state.loading ?
 
                             <div className="dashboard-invest-input-container">
+                                { this.state.modal ? <Modal heading={'Investment Page'} text={'This is a test modal'}/> : null}
                                 <h2>INVESTOR</h2>
                                 <p>Paste the video url below to begin</p>
                                 <form onSubmit={this.handleSubmit}>
