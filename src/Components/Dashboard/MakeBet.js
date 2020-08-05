@@ -19,6 +19,31 @@ export default class MakeBet extends React.Component {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
+    makeBet = (e) => {
+        fetch(`${process.env.REACT_APP_NODE_URL}/bet/place`, {
+            method: 'POST',
+            body: JSON.stringify({
+                initial_viewCount: this.props.data.videoStatistics
+                initial_dislikeCount: this.props
+                initial_likeCount:
+                bet_viewCount:
+                bet_likeCount:
+                bet_dislikeCount:
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+
+        })
+            .then(response => response.json())
+            .then(json => {
+                if (json.status === true) {
+                } else {
+                    console.log(json.message)
+                }
+            })
+    }
+
     updateValue = (e) => {
         // middle value is 50, at 50 the number should be equal to the average
         const multiplicationValue = parseFloat(`${e.target.value / 50}`)
@@ -42,7 +67,7 @@ export default class MakeBet extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        window.alert(this.state.value)
+        this.makeBet()
     }
 
     render() {
