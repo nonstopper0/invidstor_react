@@ -113,7 +113,7 @@ export default class App extends React.Component {
     if (!this.state.loading) {
       if (!this.state.token) {
         return (
-          <Redirect to="/home"/>
+          <Redirect to="/"/>
         )
       }
     }
@@ -145,37 +145,37 @@ export default class App extends React.Component {
     return (
       <HashRouter>
         <Switch>
-          <Route path="/home" component={() => <LandingHome logout={this.logout} token={this.state.token} name={this.state.name} history={this.props.history}/>}/>
+          <Route exact path="/" component={() => <LandingHome logout={this.logout} token={this.state.token} name={this.state.name} history={this.props.history}/>}/>
           <Route exact path="/login" component={() => <LogRegister login={this.login}/>} />
+          { this.state.token ?
+          <Route path="/dashboard">
+            <div className="dashboard-container">
+
+              <div className="dashboard-left">
+                  <div className="dashboard-text">
+                    <h1>InVIDstor</h1>
+                    <p>Investing in content</p>
+                  </div>
+                  <header className="dashboard-header">
+                    <NavLink exact to="/dashboard/home" activeClassName="dashboard-header-active"><IoIosHome className="dashboard-icons" />Dashboard</NavLink>
+                    <NavLink exact to="/dashboard/invest" activeClassName="dashboard-header-active"><IoIosCash className="dashboard-icons" />Invest</NavLink>
+                    <NavLink exact to="/dashboard/profile" activeClassName="dashboard-header-active"><IoIosSettings className="dashboard-icons" />My Profile</NavLink>
+                    <a onClick={this.logout}><IoIosLogOut className="homeIcons" />Logout</a>
+                  </header>
+              </div>
+
+              <div className="dashboard-right">
+                <Route exact path="/dashboard/home" component={() => <Dashboard token={this.state.token} /> } />
+                <Route exact path="/dashboard/invest" component={Invest} />
+                <Route exact path="/dashboard/profile" component={() => <MyProfile token={this.state.token}/>} />
+              </div>
+            </div>
+            </Route>
+            :
+            this.InitialRedirect()
+          }
         </Switch>
 
-        { this.state.token ?
-        <Route path="/dashboard">
-          <div className="dashboard-container">
-
-            <div className="dashboard-left">
-                <div className="dashboard-text">
-                  <h1>InVIDstor</h1>
-                  <p>Investing in content</p>
-                </div>
-                <header className="dashboard-header">
-                  <NavLink exact to="/dashboard/home" activeClassName="dashboard-header-active"><IoIosHome className="dashboard-icons" />Dashboard</NavLink>
-                  <NavLink exact to="/dashboard/invest" activeClassName="dashboard-header-active"><IoIosCash className="dashboard-icons" />Invest</NavLink>
-                  <NavLink exact to="/dashboard/profile" activeClassName="dashboard-header-active"><IoIosSettings className="dashboard-icons" />My Profile</NavLink>
-                  <a onClick={this.logout}><IoIosLogOut className="homeIcons" />Logout</a>
-                </header>
-            </div>
-
-            <div className="dashboard-right">
-              <Route exact path="/dashboard/home" component={() => <Dashboard token={this.state.token} /> } />
-              <Route exact path="/dashboard/invest" component={Invest} />
-              <Route exact path="/dashboard/profile" component={() => <MyProfile token={this.state.token}/>} />
-            </div>
-          </div>
-          </Route>
-          :
-          this.InitialRedirect()
-        }
       </HashRouter>
     );
   }

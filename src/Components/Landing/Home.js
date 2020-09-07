@@ -23,7 +23,7 @@ class LandingHome extends React.Component {
     }
     onWindowScroll = (e) => {
         //3divs onload animation
-        if (this.props.location.pathname === '/home') {
+        if (this.props.location.pathname === '/') {
             const threeRowDiv = document.getElementsByClassName('landing-page-home-3row-div')
             if (threeRowDiv[0].getBoundingClientRect().bottom <= window.innerHeight+150){
                 for (let i = 0; i < threeRowDiv.length; i++) {
@@ -43,9 +43,6 @@ class LandingHome extends React.Component {
             if (body4.getBoundingClientRect().bottom <= window.innerHeight+100) {
                 body4.classList.add('landing-page-home4-container-active')
             }
-        }
-        if (this.props.location.pathname === '/home/contact') {
-
         }
     }
     componentWillUnmount() {
@@ -70,7 +67,7 @@ class LandingHome extends React.Component {
                         { !token ? 
 
                         <div className="landing-header-navigation-fullscreen">
-                            <NavLink exact to="/home" className="landing-header-button" activeClassName="landing-header-button-active">Home</NavLink>
+                            <NavLink exact to="/" className="landing-header-button" activeClassName="landing-header-button-active">Home</NavLink>
                             <NavLink exact to="/login" className="landing-header-button" activeClassName="landing-header-button-active">Invest</NavLink>
                             <NavLink exact to="/login" className="landing-header-button" activeClassName="landing-header-button-active">Login / Register</NavLink>
                         </div>
@@ -78,7 +75,7 @@ class LandingHome extends React.Component {
                         :
 
                         <div className="landing-header-navigation-fullscreen">
-                            <NavLink exact to="/home" className="landing-header-button" activeClassName="landing-header-button-active">Home</NavLink>
+                            <NavLink exact to="/" className="landing-header-button" activeClassName="landing-header-button-active">Home</NavLink>
                             <NavLink exact to="/dashboard/home" className="landing-header-button" id="dashboard-button" activeClassName="landing-header-button-active">Dashboard</NavLink>
                             <NavLink to="/logout" onClick={this.logout} className="landing-header-button" activeClassName="landing-header-button-active">Logout</NavLink>
                         </div>
@@ -113,7 +110,7 @@ class LandingHome extends React.Component {
                         </div>
                     </div>
                     <Switch>
-                        <Route exact path="/home">
+                        <Route exact path="/">
                             
                             <div className="landing-page-home-background">
                                 <div className="landing-page-home-top-container">
@@ -179,10 +176,6 @@ class LandingHome extends React.Component {
                             </div>
 
 
-                        </Route>
-                        <Route exact path="/home/contact">
-                            <h1>About page</h1>
-                            <h3>djawdid</h3>
                         </Route>
                     </Switch>
                     <footer className="landing-page-footer">
