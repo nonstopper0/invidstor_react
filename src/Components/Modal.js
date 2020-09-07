@@ -7,6 +7,7 @@ export default function Modal(props) {
         <React.Fragment>
             <div className="modal-blur"></div>
             <div className="modal-container">
+                <button onClick={props.close}>X</button>
                 <h2>{props.heading}</h2>
                 <p>{props.text}</p>
             </div>

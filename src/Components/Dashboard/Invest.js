@@ -18,6 +18,7 @@ export default class Home extends React.Component {
         }
     }
     openModal = (e) => {
+        console.log("pushed")
         this.setState({
             modal: !this.state.modal
         })
@@ -97,7 +98,7 @@ export default class Home extends React.Component {
                             { !this.state.loading ?
 
                             <div className="dashboard-invest-input-container">
-                                { this.state.modal ? <Modal heading={'Investment Page'} text={'This is a test modal'}/> : null}
+                                { this.state.modal ? <Modal close={this.openModal} heading={'Investment Page'} text={'This is a test modal'}/> : null}
                                 <h2>INVESTOR</h2>
                                 <p>Paste the video url below to begin</p>
                                 <form onSubmit={this.handleSubmit}>
