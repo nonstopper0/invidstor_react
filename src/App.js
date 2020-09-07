@@ -92,12 +92,12 @@ export default class App extends React.Component {
   componentDidMount = async() => {
     await this.authenticateUser()
     // get users minimal data every 30 seconds to update live credit numbers. and use the intervalcount variable to limit the amount of calls
-    let intervalCount = 1
-    setInterval(() => {
-      if (intervalCount < 30) {
-        this.runningAuthentication()
-      }
-    }, 60000)
+    // let intervalCount = 1
+    // setInterval(() => {
+    //   if (intervalCount < 30) {
+    //     this.runningAuthentication()
+    //   }
+    // }, 60000)
   }
 
   // called from LogRegister.js through props. this sends our token back to app(this component) so we can store it globally.
@@ -106,6 +106,17 @@ export default class App extends React.Component {
       token: token
     })
     storeKey('authtoken', token)
+  }
+
+  // Redirect users not signed in to the home page after confirming they arent logged in by waiting for auth.
+  InitialRedirect = () => {
+    if (!this.state.loading) {
+      if (!this.state.token) {
+        return (
+          <Redirect to="/home"/>
+        )
+      }
+    }
   }
 
   // logout function that destroys the session in the database and sends the user back to the LogRegister component.
@@ -163,11 +174,8 @@ export default class App extends React.Component {
           </div>
           </Route>
           :
-
-          this.state.loading ? null : <Redirect to="/home"/>
-
+          this.InitialRedirect()
         }
-        <Route render={() =>  <Redirect to="/home"/>} />
       </HashRouter>
     );
   }

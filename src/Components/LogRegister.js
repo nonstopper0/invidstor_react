@@ -42,6 +42,7 @@ class LogRegister extends React.Component {
             }
         })
         let parsed = await response.json()
+        console.log(parsed)
         if (parsed.status === true) {
             this.setState({
                 message: ''

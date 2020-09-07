@@ -23,12 +23,12 @@ export default class MakeBet extends React.Component {
         fetch(`${process.env.REACT_APP_NODE_URL}/bet/place`, {
             method: 'POST',
             body: JSON.stringify({
-                initial_viewCount: this.props.data.videoStatistics
-                initial_dislikeCount: this.props
-                initial_likeCount:
-                bet_viewCount:
-                bet_likeCount:
-                bet_dislikeCount:
+                // initial_viewCount: this.props.data.videoStatistics
+                // initial_dislikeCount: this.props
+                // initial_likeCount:
+                // bet_viewCount:
+                // bet_likeCount:
+                // bet_dislikeCount:
             }),
             headers: {
                 'Content-Type': 'application/json'
@@ -50,11 +50,10 @@ export default class MakeBet extends React.Component {
         const newViews = (multiplicationValue * this.props.data.betAssesment.averageViews).toFixed(0)
         const newLikes = (multiplicationValue * this.props.data.betAssesment.averageLikes).toFixed(0)
         const newDislikes = (multiplicationValue * this.props.data.betAssesment.averageDislikes).toFixed(0)
-        console.log(this.state.betViews, this.props.data.videoStatistics)
         // if (this.state.betViews >= parseInt(this.props.data.videoStatistics.viewCount)) {
-        //     this.state.betAmount = (this.state.value - 30) * this.state.value
-        //     console.log(this.state.betAmount)
-        // }
+            //     this.state.betAmount = (this.state.value - 30) * this.state.value
+            //     console.log(this.state.betAmount)
+            // }
 
 
         this.setState({
@@ -106,10 +105,10 @@ export default class MakeBet extends React.Component {
                             <p><FaRegThumbsDown />{this.numberWithCommas(this.state.betDislikes)}</p>
                         </div>
                         <form onSubmit={this.handleSubmit}>
-                        <div className="dashboard-bet-slider-container">
-                            <input type="range" min="0" max="100" value={this.state.value} onChange={this.updateValue} step="1" className="dashboard-bet-slider-button"/>
-                        </div>
-                        <button type="submit" className="dasboard-bet-submit-button"><h3>BET</h3></button>
+                            <div className="dashboard-bet-slider-container">
+                                <input type="range" min="0" max="100" value={this.state.value} onChange={this.updateValue} step="1" className="dashboard-bet-slider-button"/>
+                            </div>
+                            <button type="submit" className="dasboard-bet-submit-button"><h3>BET</h3></button>
                         </form>
                     </div>
                     </div>
