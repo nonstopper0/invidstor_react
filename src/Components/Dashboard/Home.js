@@ -5,7 +5,8 @@ export default class Dashboard extends React.Component {
     constructor() {
         super() 
         this.state = {
-            
+            loading: true,
+            data: ''
         }
     }
     componentDidMount() {
@@ -17,13 +18,21 @@ export default class Dashboard extends React.Component {
                 console.log(response)
                 return response.json()
             }) 
-            .then(json => console.log(json, 'data'))
+            .then(json => this.setState({
+                loading: false,
+                data: json
+            }))
     }
     render() {
         return (
             <React.Fragment>
                 <div className="dashboard-home-container">
                     <h3> Welcome back, </h3>
+                        { !this.state.loading ? 
+                        <h1>Loaded</h1>
+                        :
+                        null 
+                        }
                 </div>
             </React.Fragment>
         )
