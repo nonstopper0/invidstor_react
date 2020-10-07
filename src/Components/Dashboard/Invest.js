@@ -41,7 +41,7 @@ export default class Home extends React.Component {
             loading: true,
             message: ''
         })
-        await fetch(`${process.env.REACT_APP_NODE_URL}/youtube/video`, {
+        await fetch(`${process.env.REACT_APP_NODE_URL}/youtube/initial`, {
             method: 'POST',
             body: JSON.stringify({videoID: url}),
             headers: {
