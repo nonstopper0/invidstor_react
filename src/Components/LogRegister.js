@@ -82,17 +82,17 @@ class LogRegister extends React.Component {
             <div className="login-page-container">
                 <div id="login-triangle"></div>
                 <div className="login-form-container">
-                    { this.state.message ? 
-                    <h3>{this.state.message}</h3>
-                    :
-                    null 
-                    }
                     <div>
                     </div>
                     <div style={{margin: 20, fontSize: 20}}className="login-form-maintext">
                         <h1>InVIDstor</h1>
                         <p>Investing in content</p>
                     </div>
+                    { this.state.message ? 
+                    <h3>{this.state.message}</h3>
+                    :
+                    null 
+                    }
                     <form className="login-form" onSubmit={this.handleSubmit}>
                     { this.state.action === "register" ? 
                         <input 
