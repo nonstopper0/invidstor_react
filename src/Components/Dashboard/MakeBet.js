@@ -21,15 +21,26 @@ export default class MakeBet extends React.Component {
     }
 
     makeBet = (e) => {
+        const {
+            videoStatistics,
+            generalData,
+            betAssesment,
+        } = this.props.data
+        console.log(this.props.data)
         fetch(`${process.env.REACT_APP_NODE_URL}/bet/place`, {
             method: 'POST',
             body: JSON.stringify({
-                // initial_viewCount: this.props.data.videoStatistics
-                // initial_dislikeCount: this.props
-                // initial_likeCount:
-                // bet_viewCount:
-                // bet_likeCount:
-                // bet_dislikeCount:
+                initial_viewCount: videoStatistics.viewCount,
+                initial_dislikeCount: videoStatistics.dislikeCount,
+                initial_likeCount: videoStatistics.likeCount,
+                userBet_viewCount: this.state.betViews,
+                userBet_likeCount: this.state.betLikes,
+                userBet_dislikeCount: this.state.betDislikes,
+                ourBet_viewCount: betAssesment.averageViews,
+                ourBet_likeCount: betAssesment.averageLikes,
+                ourBet_dislikeCount: betAssesment.averageDislikes,
+                authToken: getKey('authtoken'),
+                videoId: this.props.data.videoId
             }),
             headers: {
                 'Content-Type': 'application/json'
