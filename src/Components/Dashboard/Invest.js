@@ -1,7 +1,10 @@
 import React from 'react'
 import MakeBet from './MakeBet.js'
 import Modal from '../Modal.js'
+import {getKey, storeKey, removeKey} from '../../Key.js'
+
 import './Invest.scss'
+
 import { IoMdPlay } from 'react-icons/io'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { FaRegQuestionCircle } from 'react-icons/fa'
@@ -37,20 +40,24 @@ export default class Home extends React.Component {
         }
     }
     getVideoData = async(url) => {
+        // fetch data from express app using video url supplied from input box
         this.setState({
             loading: true,
             message: ''
         })
         await fetch(`${process.env.REACT_APP_NODE_URL}/youtube/initial`, {
             method: 'POST',
-            body: JSON.stringify({videoID: url}),
+            body: JSON.stringify({
+                videoId: url,
+                authId: localStorage.getItem('authtoken')
+            }),
             headers: {
               'Content-Type': 'application/json'
             }
           })
           .then(res => res.json())
           .then(json => {
-              // did our request succeed or fail?
+              // did my request succeed or fail?
               if (json.status === false) {
                   this.setState({
                       message: json.message,
@@ -58,12 +65,12 @@ export default class Home extends React.Component {
                       url: ''
                   })
               } else {
-                  console.log(json)
+                  storeKey("data", json);
                   this.setState({
                       data: json,
                       loading: false,
                       makeBetScreen: true,
-                    })
+                  })
               }
           })
     }
@@ -74,6 +81,7 @@ export default class Home extends React.Component {
     }
     handleSubmit = async (e) => {
         e.preventDefault()
+        // adding a final check for length to prove validity before sending
         if (this.state.url.length > 10) {
             let parsedUrl = await this.urlParser(this.state.url)
             if (parsedUrl) {
@@ -83,6 +91,17 @@ export default class Home extends React.Component {
             this.setState({
                 message: 'Please enter a valid URL'
             })
+        }
+    }
+    componentDidMount() {
+        try {
+            let json = getKey('data')
+            this.setState({
+                data: json,
+                makeBetScreen: true
+            })
+        } catch{
+            console.log("no key data found")
         }
     }
     render() {

@@ -16,7 +16,6 @@ import { IoIosSettings, IoIosHome, IoIosCash, IoIosLogOut } from 'react-icons/io
 require('dotenv').config()
 
 export default class App extends React.Component {
-
   constructor() {
     super()
     this.state = {
@@ -70,34 +69,27 @@ export default class App extends React.Component {
   }
 
   // get users credits 
-  runningAuthentication = async() => {
-    if (this.state.token) {
-      fetch(`${process.env.REACT_APP_NODE_URL}/user/info/minimal?sessionID=${this.state.token}`)
-      .then(response => response.json())
-      .then(json => {
-        if (json.status === false) {
-          this.setState({
-            token: false
-          })
-        } else {
-          console.log(json)
-        }
-      })
-    } else {
-      console.log('user not signed in')
-    }
-  }
+  // runningAuthentication = async() => {
+  //   if (this.state.token) {
+  //     fetch(`${process.env.REACT_APP_NODE_URL}/user/info/minimal?sessionID=${this.state.token}`)
+  //     .then(response => response.json())
+  //     .then(json => {
+  //       if (json.status === false) {
+  //         this.setState({
+  //           token: false
+  //         })
+  //       } else {
+  //         console.log(json)
+  //       }
+  //     })
+  //   } else {
+  //     console.log('user not signed in')
+  //   }
+  // }
 
   // on initial startup of the web application, authenticate the user to avoid making them sign in again.
   componentDidMount = async() => {
     await this.authenticateUser()
-    // get users minimal data every 30 seconds to update live credit numbers. and use the intervalcount variable to limit the amount of calls
-    // let intervalCount = 1
-    // setInterval(() => {
-    //   if (intervalCount < 30) {
-    //     this.runningAuthentication()
-    //   }
-    // }, 60000)
   }
 
   // called from LogRegister.js through props. this sends our token back to app(this component) so we can store it globally.
