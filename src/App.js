@@ -124,7 +124,7 @@ export default class App extends React.Component {
       })
       let parsed = await response.json()
       if (parsed.status) {
-        removeKey()
+        removeKey('authtoken')
         this.setState({
           token: false
         })

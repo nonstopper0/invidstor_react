@@ -28,9 +28,9 @@ export function storeKey(key, obj) {
     }
 }
 
-export function removeKey() {
+export function removeKey(key) {
     try {
-        localStorage.removeItem('authtoken')
+        localStorage.removeItem(key)
     } catch(err) {
         console.log(err)
     }

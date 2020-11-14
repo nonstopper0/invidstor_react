@@ -1,5 +1,6 @@
 import React from 'react'
 import './MakeBet.scss'
+import {getKey, storeKey, removeKey} from '../../Key.js'
 import { FaRegThumbsUp, FaRegThumbsDown, FaRegEye } from 'react-icons/fa'
 import { AiOutlinePullRequest } from 'react-icons/ai'
 

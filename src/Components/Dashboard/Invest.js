@@ -65,7 +65,11 @@ export default class Home extends React.Component {
                       url: ''
                   })
               } else {
-                  storeKey("data", json);
+                  let currentDate = Date.now();
+                  
+                  // store the bet data into browser local store
+                  storeKey("data", {currentDate, json});
+
                   this.setState({
                       data: json,
                       loading: false,
@@ -93,17 +97,24 @@ export default class Home extends React.Component {
             })
         }
     }
+
     componentDidMount() {
-        try {
-            let json = getKey('data')
-            this.setState({
-                data: json,
-                makeBetScreen: true
-            })
-        } catch{
-            console.log("no key data found")
+        // using the browsers local storage. I load in the bet that was inside the browser storage if the user accidentally logs out or changes tabs. I delete the data if it is over a minute old to try and prevent "beating the system"
+        let json = getKey('data')
+        if(json) {
+            let currentDate = Date.now();
+            console.log((currentDate - json.currentDate) / 1000 + " seconds from data creation")
+            if (currentDate - json.currentDate < 60000) {
+                this.setState({
+                    data: json.json,
+                    makeBetScreen: true
+                })             
+            } else {
+                removeKey('data')
+            }
         }
     }
+
     render() {
         return (
             <React.Fragment>
