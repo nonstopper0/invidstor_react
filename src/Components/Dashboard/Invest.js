@@ -85,17 +85,15 @@ export default class Home extends React.Component {
     }
     handleSubmit = async (e) => {
         e.preventDefault()
-        // adding a final check for length to prove validity before sending
-        if (this.state.url.length > 10) {
-            let parsedUrl = await this.urlParser(this.state.url)
-            if (parsedUrl) {
-                this.getVideoData(parsedUrl)
-            }
-        } else {
+        let parsedUrl = await this.urlParser(this.state.url)
+        if (!parsedUrl || parsedUrl.length != 11) {
             this.setState({
+                url: '',
                 message: 'Please enter a valid URL'
             })
+            return
         }
+        this.getVideoData(parsedUrl)
     }
 
     componentDidMount() {

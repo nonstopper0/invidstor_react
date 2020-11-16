@@ -1,8 +1,7 @@
 import React from 'react'
 import './MakeBet.scss'
-import {getKey, storeKey, removeKey} from '../../Key.js'
+import { getKey } from '../../Key.js'
 import { FaRegThumbsUp, FaRegThumbsDown, FaRegEye } from 'react-icons/fa'
-import { AiOutlinePullRequest } from 'react-icons/ai'
 
 export default class MakeBet extends React.Component {
     constructor() {
@@ -40,7 +39,7 @@ export default class MakeBet extends React.Component {
                 ourBet_likeCount: betAssesment.averageLikes,
                 ourBet_dislikeCount: betAssesment.averageDislikes,
                 authToken: getKey('authtoken'),
-                videoId: this.props.data.videoId
+                videoId: generalData.videoId
             }),
             headers: {
                 'Content-Type': 'application/json'

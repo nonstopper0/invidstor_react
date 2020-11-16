@@ -6,7 +6,6 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 
 import DeskMan from "./SVG/Asset 2.svg"
 import LightBulbs from './SVG/Asset 1.svg'
-import InvestPlant from './SVG/invest.svg'
 import Invest from './SVG/icons/invest.svg'
 import Profit from './SVG/icons/profit.svg'
 import Search from './SVG/icons/search.svg'
@@ -129,19 +128,19 @@ class LandingHome extends React.Component {
                                 <div className="landing-page-home-3row">
                                     <div className="landing-page-home-3row-div">
                                         <div className="landing-page-home-3row-svg-container">
-                                            <img src={Search} className="landing-page-home-3row-svg"></img>
+                                            <img alt="search" src={Search} className="landing-page-home-3row-svg"></img>
                                         </div>
                                         <h3>Explore</h3>
                                     </div>
                                     <div className="landing-page-home-3row-div">
                                         <div className="landing-page-home-3row-svg-container">
-                                            <img src={Invest} className="landing-page-home-3row-svg"></img>
+                                            <img alt="invest" src={Invest} className="landing-page-home-3row-svg"></img>
                                         </div>
                                         <h3>Invest</h3>
                                     </div>
                                     <div className="landing-page-home-3row-div">
                                         <div className="landing-page-home-3row-svg-container">
-                                            <img src={Profit} className="landing-page-home-3row-svg"></img>
+                                            <img alt="profit" src={Profit} className="landing-page-home-3row-svg"></img>
                                         </div>
                                         <h3>Profit</h3>
                                     </div>

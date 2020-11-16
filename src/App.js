@@ -152,7 +152,7 @@ export default class App extends React.Component {
                     <NavLink exact to="/dashboard/home" activeClassName="dashboard-header-active"><IoIosHome className="dashboard-icons" />Dashboard</NavLink>
                     <NavLink exact to="/dashboard/invest" activeClassName="dashboard-header-active"><IoIosCash className="dashboard-icons" />Invest</NavLink>
                     <NavLink exact to="/dashboard/profile" activeClassName="dashboard-header-active"><IoIosSettings className="dashboard-icons" />My Profile</NavLink>
-                    <a onClick={this.logout}><IoIosLogOut className="homeIcons" />Logout</a>
+                    <a onClick={this.logout}><IoIosLogOut className="dashboard-icons" />Logout</a>
                   </header>
               </div>
 
