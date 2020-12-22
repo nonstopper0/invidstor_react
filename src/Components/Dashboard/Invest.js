@@ -86,7 +86,7 @@ export default class Home extends React.Component {
     handleSubmit = async (e) => {
         e.preventDefault()
         let parsedUrl = await this.urlParser(this.state.url)
-        if (!parsedUrl || parsedUrl.length != 11) {
+        if (!parsedUrl || parsedUrl.length !== 11) {
             this.setState({
                 url: '',
                 message: 'Please enter a valid URL'
