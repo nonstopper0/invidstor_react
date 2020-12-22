@@ -1,13 +1,14 @@
 .myProfileRow {
     color: #00d2ff;
     border-bottom: 1px solid rgba(255,255,255,.1);
+    animation: fadeIn 2s ease;
 }
 
 
 
 .myProfileSpan {
     color: white;
-    font-weight: 500;
+    font-weight: 300;
 }
 
 .myProfileEditingRow {

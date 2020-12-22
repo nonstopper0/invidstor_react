@@ -10,8 +10,8 @@ export default class MyProfile extends React.Component {
             loading: true,
             editing: false,
             userData: {},
-            display_name: '',
-            email: '',
+            new_display_name: '',
+            new_email: '',
         }
     }
     componentDidMount() {
@@ -26,8 +26,8 @@ export default class MyProfile extends React.Component {
                     console.log(json.userInfo)
                     this.setState({
                         userData: json.userInfo,
-                        email: json.userInfo.email,
-                        display_name: json.userInfo.display_name
+                        new_email: json.userInfo.email,
+                        new_display_name: json.userInfo.display_name
                     })
                 } else {
                     console.log(json.message)
@@ -41,7 +41,10 @@ export default class MyProfile extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
         this.setState({editing: false})
-        this.updateProfile()
+        // dont send update request to server if the data is unchanged.
+        if (this.state.new_display_name != this.state.userData.display_name || this.state.new_email != this.state.userData.email) {
+            this.updateProfile()
+        }
     }
     handleChange = (e) => {
         this.setState({
@@ -54,8 +57,8 @@ export default class MyProfile extends React.Component {
             body: JSON.stringify({
                 sessionID: this.props.token,
                 updateInfo: {
-                    email: this.state.email,
-                    display_name: this.state.display_name
+                    email: this.state.new_email,
+                    display_name: this.state.new_display_name
                 }
             }),
             headers: {
@@ -72,10 +75,10 @@ export default class MyProfile extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <div className="dashboard-container">
+                <div className="dashboard-right-container">
                 { !this.state.loading ? 
 
-                        <div className="investDataContainerMyProfileContainer">
+                        <div>
 
                             { !this.state.editing ? 
                             // default state
@@ -106,9 +109,9 @@ export default class MyProfile extends React.Component {
                                 <div className="myProfileEditingRow">
                                     <h2>Display Name</h2>
                                     <input 
-                                        name="display_name"
+                                        name="new_display_name"
                                         className="myProfileEditingRow" 
-                                        value={this.state.display_name}
+                                        value={this.state.new_display_name}
                                         placeholder={this.state.userData.display_name}
                                         onChange={this.handleChange}
                                     />
@@ -119,9 +122,9 @@ export default class MyProfile extends React.Component {
                                 <div className="myProfileEditingRow">
                                     <h2>Email</h2>
                                     <input 
-                                        name="email"
+                                        name="new_email"
                                         className="myProfileEditingRow" 
-                                        value={this.state.email}
+                                        value={this.state.new_email}
                                         placeholder={this.state.userData.email}
                                         onChange={this.handleChange}
                                     />
@@ -136,8 +139,8 @@ export default class MyProfile extends React.Component {
 
                         </div>
                 :
-                    <div className="investInputContainer">
-                        <AiOutlineLoading3Quarters id="inputSpinner" />
+                    <div className="dashboard-right-home">
+                        <AiOutlineLoading3Quarters id="dashboard-invest-spinner" />
                     </div>
                 }
                 </div>
