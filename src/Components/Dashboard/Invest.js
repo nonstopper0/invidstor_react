@@ -116,7 +116,7 @@ export default class Home extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <div className="dashboard-invest-container">
+                <div className="dashboard-container">
                     
                     { !this.state.makeBetScreen ? 
 

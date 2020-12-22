@@ -86,10 +86,6 @@
     z-index: 9;
 }
 
-.landing-page-home-top-text-container:hover {
-    transform: translate(-50%, -50%) scale(1.1);
-}
-
 .landing-page-home-top-text-container h2 {
     font-size: 40px;
 }
@@ -114,7 +110,7 @@
 
 .landing-page-home-curve {
     transition: 2s ease;
-    opacity: .3;
+    opacity: .05;
     position: absolute;
     width: 110%;
     z-index: 2;

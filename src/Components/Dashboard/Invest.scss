@@ -1,37 +1,24 @@
 @import "../../SCSS/media";
 
-.dashboard-invest-container {
-    position: relative;
-    width: 95%;
-    padding: 30px 0px;
-    box-sizing: border-box;
-    height: 95%;
-    overflow: hidden;
-    margin: auto auto;
-    background: rgba(27, 47, 66, 0.418);
-    border-radius: 20px;
+#dashboard-invest-help-button {
 
-    #dashboard-invest-help-button {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 20px;
+    top: 20px;
 
-        background: none;
-        border: none;
-        position: absolute;
-        right: 20px;
-        top: 20px;
-
-        &:focus {
-            outline: none;
-        }
-
-        #dashboard-invest-help-icon {
-            transition: 1s ease;
-            font-size: 30px;
-            color: rgb(131, 131, 131);
-
-            &:hover {
-                color: white;
-                transform: scale(1.1)
-            }
+    &:focus {
+        outline: none;
+    }
+    
+    #dashboard-invest-help-icon {
+        transition: 1s ease;
+        font-size: 30px;
+        color: rgb(131, 131, 131);
+        &:hover {
+            color: white;
+            transform: scale(1.1)
         }
     }
 }

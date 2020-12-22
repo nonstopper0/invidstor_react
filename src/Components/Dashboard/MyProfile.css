@@ -10,13 +10,6 @@
     font-weight: 500;
 }
 
-.investDataContainerMyProfileContainer {
-    width: 90%;
-    height: 90%;
-    margin: 0 auto;
-    animation: fadeIn 2s ease;
-}
-
 .myProfileEditingRow {
     color: #00d2ff;
     display: flex;

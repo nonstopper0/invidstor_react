@@ -98,6 +98,18 @@
         min-width: 100vw;
         min-height: 100vh;
     }
+
+    .dashboard-container {
+        position: relative;
+        width: 95%;
+        padding: 5% 5%;
+        box-sizing: border-box;
+        height: 95%;
+        overflow: hidden;
+        margin: auto auto;
+        background: rgba(27, 47, 66, 0.418);
+        border-radius: 20px;
+    }
 }
 
 

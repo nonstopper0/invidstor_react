@@ -72,7 +72,7 @@ export default class MyProfile extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <div className="investDataContainer">
+                <div className="dashboard-container">
                 { !this.state.loading ? 
 
                         <div className="investDataContainerMyProfileContainer">
