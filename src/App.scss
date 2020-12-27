@@ -51,7 +51,7 @@
     }
 
 
-    .dashboard-header {
+    header {
         margin-top: 50px;
         display: flex;
         flex-direction: column;
@@ -93,6 +93,30 @@
                 box-shadow: none;
                 color: rgb(24, 158, 196)
             }
+        }
+    }
+
+    footer {
+        
+
+        @include phone {
+            display: none;
+        }
+
+        a {
+            transition: .5s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            color: rgb(219, 219, 219);
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .dashboard-back-button {
+            font-size: 30px;
+            color: grey;
         }
     }
 }

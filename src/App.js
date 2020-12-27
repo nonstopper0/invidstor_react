@@ -11,7 +11,7 @@ import LogRegister from './Components/LogRegister.js'
 
 //styling
 import './App.scss';
-import { IoIosSettings, IoIosHome, IoIosCash, IoIosLogOut } from 'react-icons/io'
+import { IoIosSettings, IoIosHome, IoIosCash, IoIosLogOut, IoIosArrowBack } from 'react-icons/io'
 
 require('dotenv').config()
 
@@ -148,12 +148,15 @@ export default class App extends React.Component {
                     <h1>InVIDstor</h1>
                     <p>Investing in content</p>
                   </div>
-                  <header className="dashboard-header">
+                  <header>
                     <NavLink exact to="/dashboard/home" activeClassName="dashboard-header-active"><IoIosHome className="dashboard-icons" />Dashboard</NavLink>
                     <NavLink exact to="/dashboard/invest" activeClassName="dashboard-header-active"><IoIosCash className="dashboard-icons" />Invest</NavLink>
                     <NavLink exact to="/dashboard/profile" activeClassName="dashboard-header-active"><IoIosSettings className="dashboard-icons" />My Profile</NavLink>
                     <a onClick={this.logout}><IoIosLogOut className="dashboard-icons" />Logout</a>
                   </header>
+                  <footer>
+                    <NavLink exact to="/"><IoIosArrowBack className="dashboard-back-button"/>Home Page</NavLink>
+                  </footer>
               </div>
 
               <div className="dashboard-right">

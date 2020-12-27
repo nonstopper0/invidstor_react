@@ -20,6 +20,12 @@ class LogRegister extends React.Component {
     }
     handleSubmit = (e) => {
         e.preventDefault()
+
+        if (!this.state.password || !this.state.username) {
+            this.setState({ message: "Please enter your information below"})
+            return
+        }
+        
         if (this.state.action === 'login') {
             this.login({
                 username: this.state.username.toLowerCase(),
@@ -78,12 +84,8 @@ class LogRegister extends React.Component {
     }
     render() {
         return (
-        <React.Fragment>
             <div className="login-page-container">
-                <div id="login-triangle"></div>
                 <div className="login-form-container">
-                    <div>
-                    </div>
                     <div style={{margin: 20, fontSize: 20}}className="login-form-maintext">
                         <h1>InVIDstor</h1>
                         <p>Investing in content</p>
@@ -124,7 +126,6 @@ class LogRegister extends React.Component {
                     </form>
                 </div>
             </div>
-        </React.Fragment>
         )
     }
 }
