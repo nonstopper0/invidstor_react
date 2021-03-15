@@ -114,25 +114,29 @@ export default class App extends React.Component {
   // logout function that destroys the session in the database and sends the user back to the LogRegister component.
   logout = async () => {
     console.log('logging out...')
-    if (this.state.token) {
-      const response = await fetch(`${process.env.REACT_APP_NODE_URL}/user/logout`, {
+
+    if (!this.state.token) { 
+      return
+    }
+
+    const response = await fetch(`${process.env.REACT_APP_NODE_URL}/user/logout`, {
         method: 'POST',
         body: JSON.stringify({token: this.state.token}),
         headers: {
           'Content-Type': 'application/json'
-        }
-      })
-      let parsed = await response.json()
-      if (parsed.status) {
-        removeKey('authtoken')
-        this.setState({
-          token: false
-        })
-      } else {
-        alert(parsed.message)
       }
+    })
+
+    let parsed = await response.json()
+    if (parsed.status) {
+      removeKey('authtoken')
+      this.setState({
+        token: false
+      })
     }
   }
+
+
   render() {
     return (
       <HashRouter>

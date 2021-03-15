@@ -21,7 +21,6 @@ export default class Home extends React.Component {
         }
     }
     openModal = (e) => {
-        console.log("pushed")
         this.setState({
             modal: !this.state.modal
         })

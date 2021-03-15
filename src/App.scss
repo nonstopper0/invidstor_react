@@ -82,7 +82,7 @@
             font-size: 17px;
         }
 
-        &-active {
+        .dashboard-header-active {
             font-weight: bold;
             animation: clipcircle .5s ease-out;
             background-color: rgb(14, 24, 34) !important;
