@@ -184,14 +184,14 @@ class LandingHome extends React.Component {
                                 { !token ? 
 
                                 <div className="landing-page-footer-nav-div" activeClassName="active-class">
-                                    <NavLink exact to="/home" className="landing-footer-button" activeClassName="active-class">Home</NavLink>
+                                    <NavLink exact to="/" className="landing-footer-button" activeClassName="active-class">Home</NavLink>
                                     <NavLink exact to="/login" className="landing-footer-button" activeClassName="active-class">Login / Register</NavLink>
                                 </div>
 
                                 :
 
                                 <div className="landing-page-footer-nav-div">
-                                    <NavLink exact to="/home" className="landing-footer-button" activeClassName="active-class">Home</NavLink>
+                                    <NavLink exact to="/" className="landing-footer-button" activeClassName="active-class">Home</NavLink>
                                     <NavLink exact to="/dashboard/home" className="landing-footer-button" activeClassName="active-class">Dashboard</NavLink>
                                     <NavLink to="/logout" onClick={this.logout} className="landing-footer-button" activeClassName="active-class">Logout</NavLink>
                                 </div>
