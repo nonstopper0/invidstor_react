@@ -23,7 +23,6 @@ export default class MakeBet extends React.Component {
         const {
             videoStatistics,
             generalData,
-            betAssesment,
         } = this.props.data
         console.log(this.props.data)
         fetch(`${process.env.REACT_APP_NODE_URL}/bet/place`, {
@@ -35,9 +34,6 @@ export default class MakeBet extends React.Component {
                 userBet_viewCount: this.state.betViews,
                 userBet_likeCount: this.state.betLikes,
                 userBet_dislikeCount: this.state.betDislikes,
-                ourBet_viewCount: betAssesment.averageViews,
-                ourBet_likeCount: betAssesment.averageLikes,
-                ourBet_dislikeCount: betAssesment.averageDislikes,
                 authToken: getKey('authtoken'),
                 videoId: generalData.videoId
             }),
@@ -56,23 +52,23 @@ export default class MakeBet extends React.Component {
     }
 
     updateValue = (e) => {
-        // middle value is 50, at 50 the number should be equal to the average
-        const multiplicationValue = parseFloat(`${e.target.value / 50}`)
-        const newViews = (multiplicationValue * this.props.data.betAssesment.averageViews).toFixed(0)
-        const newLikes = (multiplicationValue * this.props.data.betAssesment.averageLikes).toFixed(0)
-        const newDislikes = (multiplicationValue * this.props.data.betAssesment.averageDislikes).toFixed(0)
-        // if (this.state.betViews >= parseInt(this.props.data.videoStatistics.viewCount)) {
-            //     this.state.betAmount = (this.state.value - 30) * this.state.value
-            //     console.log(this.state.betAmount)
-            // }
+        // // middle value is 50, at 50 the number should be equal to the average
+        // const multiplicationValue = parseFloat(`${e.target.value / 50}`)
+        // const newViews = (multiplicationValue * this.props.data.betAssesment.averageViews).toFixed(0)
+        // const newLikes = (multiplicationValue * this.props.data.betAssesment.averageLikes).toFixed(0)
+        // const newDislikes = (multiplicationValue * this.props.data.betAssesment.averageDislikes).toFixed(0)
+        // // if (this.state.betViews >= parseInt(this.props.data.videoStatistics.viewCount)) {
+        //     //     this.state.betAmount = (this.state.value - 30) * this.state.value
+        //     //     console.log(this.state.betAmount)
+        //     // }
 
 
-        this.setState({
-            value: e.target.value,
-            betViews: newViews,
-            betLikes: newLikes,
-            betDislikes: newDislikes
-        })
+        // this.setState({
+        //     value: e.target.value,
+        //     betViews: newViews,
+        //     betLikes: newLikes,
+        //     betDislikes: newDislikes
+        // })
     }
 
     handleSubmit = (e) => {
@@ -83,7 +79,6 @@ export default class MakeBet extends React.Component {
     render() {
         const {
             generalData, 
-            betAssesment,
             videoStatistics
         } = this.props.data
         return (
@@ -102,12 +97,6 @@ export default class MakeBet extends React.Component {
                             <p><FaRegEye />{this.numberWithCommas(videoStatistics.viewCount)}</p>
                             <p><FaRegThumbsUp />{this.numberWithCommas(videoStatistics.likeCount)}</p>
                             <p><FaRegThumbsDown />{this.numberWithCommas(videoStatistics.dislikeCount)}</p>
-                        </div>
-                        <h3>Our Bet</h3>
-                        <div className="dashboard-bet-stats-container">
-                            <p><FaRegEye />{this.numberWithCommas(betAssesment.averageViews)}</p>
-                            <p><FaRegThumbsUp />{this.numberWithCommas(betAssesment.averageLikes)}</p>
-                            <p><FaRegThumbsDown />{this.numberWithCommas(betAssesment.averageDislikes)}</p>
                         </div>
                         <h3>User Bet</h3>
                         <div className="dashboard-bet-stats-container">
