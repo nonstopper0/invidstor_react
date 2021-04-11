@@ -19,12 +19,16 @@ export default class MakeBet extends React.Component {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
+    componentDidMount = (e) => {
+        console.log(this.props.data)
+    }
+
     makeBet = (e) => {
         const {
             videoStatistics,
             generalData,
         } = this.props.data
-        console.log(this.props.data)
+
         fetch(`${process.env.REACT_APP_NODE_URL}/bet/place`, {
             method: 'POST',
             body: JSON.stringify({
@@ -49,6 +53,17 @@ export default class MakeBet extends React.Component {
                     console.log(json.message)
                 }
             })
+    }
+
+    dateConverter = (date) => {
+        let newDate = new Date(date)
+        const time = newDate.toLocaleString('en-US', { timeStyle: "long"});
+        const day = newDate.toLocaleString('en-US', { dateStyle: "long"})
+        return (
+            <div className="date">
+                <p>Uploaded on: <span>{day}</span>, at <span>{time}</span>.</p>
+            </div>
+        )
     }
 
     updateValue = (e) => {
@@ -85,11 +100,14 @@ export default class MakeBet extends React.Component {
             <React.Fragment>
                 <div className="dashboard-bet-container">
                     <div className="dashboard-bet-thumbnail-container">
-                        <img alt="video thumbnail" id="dashboard-bet-thumbnail" src={generalData.thumbnails.default.url}/>
-                        <span>
+                        <a target="_blank" href={`https://www.youtube.com/watch?v=${this.props.data.videoId}`}>
+                            <img alt="video thumbnail" id="dashboard-bet-thumbnail" src={generalData.thumbnails.default.url}/>
+                        </a>
+                        <div className="title">
                             <h2>{generalData.title}</h2>
-                            <p>By: {generalData.channelTitle}</p>
-                        </span>
+                            <a target="_blank" href={`https://www.youtube.com/channel/${generalData.channelId}`}>{generalData.channelTitle}</a>
+                        </div>
+                        { this.dateConverter(generalData.publishedAt) }
                     </div>
                     <div className="dashboard-bet-bottom-container">
                         <h3>Video Statistics</h3>
