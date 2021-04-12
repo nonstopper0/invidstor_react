@@ -15,13 +15,19 @@ export default class MakeBet extends React.Component {
         }
     }
 
+    componentDidMount = (e) => {
+        const { videoStatistics } = this.props.data
+        this.setState({
+            betViews: videoStatistics.viewCount,
+            betLikes: videoStatistics.likeCount,
+            betDislikes: videoStatistics.dislikeCount
+        })
+    }
+
     numberWithCommas = (x) => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    componentDidMount = (e) => {
-        console.log(this.props.data)
-    }
 
     makeBet = (e) => {
         const {
@@ -67,23 +73,27 @@ export default class MakeBet extends React.Component {
     }
 
     updateValue = (e) => {
-        // // middle value is 50, at 50 the number should be equal to the average
-        // const multiplicationValue = parseFloat(`${e.target.value / 50}`)
-        // const newViews = (multiplicationValue * this.props.data.betAssesment.averageViews).toFixed(0)
-        // const newLikes = (multiplicationValue * this.props.data.betAssesment.averageLikes).toFixed(0)
-        // const newDislikes = (multiplicationValue * this.props.data.betAssesment.averageDislikes).toFixed(0)
-        // // if (this.state.betViews >= parseInt(this.props.data.videoStatistics.viewCount)) {
-        //     //     this.state.betAmount = (this.state.value - 30) * this.state.value
-        //     //     console.log(this.state.betAmount)
-        //     // }
+        // convert slider value to a decimal between 0-2 to use 
+        const multiplicationValue = parseFloat(`${(e.target.value / 30) + 1}`)
+        console.log('multiply value: ', multiplicationValue)
+        console.log(e.target.value)
+        console.log(e.target.value / 50)
+        const newViews = (multiplicationValue * this.props.data.videoStatistics.viewCount).toFixed(0)
+        const newLikes = (multiplicationValue * this.props.data.videoStatistics.likeCount).toFixed(0)
+        const newDislikes = (multiplicationValue * this.props.data.videoStatistics.dislikeCount).toFixed(0)
+        // if (this.state.betViews >= parseInt(this.props.data.videoStatistics.viewCount)) {
+            //     this.state.betAmount = (this.state.value - 30) * this.state.value
+            //     console.log(this.state.betAmount)
+            // }
 
 
-        // this.setState({
-        //     value: e.target.value,
-        //     betViews: newViews,
-        //     betLikes: newLikes,
-        //     betDislikes: newDislikes
-        // })
+        this.setState({
+            // convert multiplication value back to 0-100 and set it as slider value 
+            value: ((multiplicationValue - 1) * 30).toFixed(0),
+            betViews: newViews,
+            betLikes: newLikes,
+            betDislikes: newDislikes
+        })
     }
 
     handleSubmit = (e) => {

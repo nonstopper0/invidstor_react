@@ -9,9 +9,11 @@ export default class Dashboard extends React.Component {
             data: ''
         }
     }
+
     componentDidMount() {
         this.getUserData()
     }
+
     getUserData = async (e) => {
         await fetch(`${process.env.REACT_APP_NODE_URL}/user/info/data?sessionID=${this.props.token}`)
             .then(response => {
@@ -23,6 +25,7 @@ export default class Dashboard extends React.Component {
                 data: json
             }))
     }
+    
     render() {
         return (
             <React.Fragment>

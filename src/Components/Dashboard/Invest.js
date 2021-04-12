@@ -5,6 +5,7 @@ import {getKey, storeKey, removeKey} from '../../Key.js'
 
 import './Invest.scss'
 
+// ICONS
 import { IoMdPlay } from 'react-icons/io'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { FaRegQuestionCircle } from 'react-icons/fa'
@@ -21,11 +22,34 @@ export default class Home extends React.Component {
             data: [],
         }
     }
+
+    componentDidMount() {
+        // using the browsers local storage. I load in the bet that was inside the browser storage if the user accidentally logs out or changes tabs. 
+        // I delete the data if it is over a minute old to try and prevent a possible "beating the system" scenario
+        let json = getKey('data')
+
+        if(json) {
+
+            let currentDate = Date.now();
+
+            if (currentDate - json.currentDate < 60000) {
+                this.setState({
+                    data: json.json,
+                    makeBetScreen: true
+                })   
+                return          
+            } 
+
+            removeKey('data')
+        }
+    }
+
     openModal = (e) => {
         this.setState({
             modal: !this.state.modal
         })
     }
+
     urlParser = (url) => {
         try {
             let newURL = ''
@@ -39,6 +63,7 @@ export default class Home extends React.Component {
             })
         }
     }
+
     getVideoData = async(url) => {
         // fetch data from express app using video url supplied from input box
         this.setState({
@@ -78,11 +103,13 @@ export default class Home extends React.Component {
               }
           })
     }
+
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
     }
+
     handleSubmit = async (e) => {
         e.preventDefault()
         let parsedUrl = await this.urlParser(this.state.url)
@@ -94,23 +121,6 @@ export default class Home extends React.Component {
             return
         }
         this.getVideoData(parsedUrl)
-    }
-
-    componentDidMount() {
-        // using the browsers local storage. I load in the bet that was inside the browser storage if the user accidentally logs out or changes tabs. I delete the data if it is over a minute old to try and prevent "beating the system"
-        let json = getKey('data')
-        if(json) {
-            let currentDate = Date.now();
-            console.log((currentDate - json.currentDate) / 1000 + " seconds from data creation")
-            if (currentDate - json.currentDate < 60000) {
-                this.setState({
-                    data: json.json,
-                    makeBetScreen: true
-                })             
-            } else {
-                removeKey('data')
-            }
-        }
     }
 
     render() {

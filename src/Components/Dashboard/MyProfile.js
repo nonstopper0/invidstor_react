@@ -42,7 +42,7 @@ export default class MyProfile extends React.Component {
         e.preventDefault()
         this.setState({editing: false})
         // dont send update request to server if the data is unchanged.
-        if (this.state.new_display_name != this.state.userData.display_name || this.state.new_email != this.state.userData.email) {
+        if (this.state.new_display_name !== this.state.userData.display_name || this.state.new_email !== this.state.userData.email) {
             this.updateProfile()
         }
     }
