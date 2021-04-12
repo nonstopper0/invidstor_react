@@ -18,6 +18,7 @@ export default class Home extends React.Component {
             message: 'Video URL',
             makeBetScreen: false,
             modal: false,
+            data: [],
         }
     }
     openModal = (e) => {
