@@ -8,10 +8,13 @@ export default class MakeBet extends React.Component {
         super()
         this.state = {
             value: 0,
+
             betViews: 0,
             betLikes: 0,
             betDislikes: 0,
             betAmount: 0,
+
+            multiplier: 4
         }
     }
 
@@ -32,8 +35,10 @@ export default class MakeBet extends React.Component {
     makeBet = (e) => {
         const {
             videoStatistics,
-            generalData,
+            videoId
         } = this.props.data
+
+        console.log(this.props.data)
 
         fetch(`${process.env.REACT_APP_NODE_URL}/bet/place`, {
             method: 'POST',
@@ -45,7 +50,7 @@ export default class MakeBet extends React.Component {
                 userBet_likeCount: this.state.betLikes,
                 userBet_dislikeCount: this.state.betDislikes,
                 authToken: getKey('authtoken'),
-                videoId: generalData.videoId
+                videoId: videoId
             }),
             headers: {
                 'Content-Type': 'application/json'
@@ -73,23 +78,23 @@ export default class MakeBet extends React.Component {
     }
 
     updateValue = (e) => {
-        // convert slider value to a decimal between 0-2 to use 
-        const multiplicationValue = parseFloat(`${(e.target.value / 30) + 1}`)
-        console.log('multiply value: ', multiplicationValue)
-        console.log(e.target.value)
-        console.log(e.target.value / 50)
+        let multiplier = 
+            this.state.multiplier === 1 ? 10 : 
+            this.state.multiplier === 2 ? 20 :
+            this.state.multiplier === 3 ? 30 : 
+            this.state.multiplier === 4 ? 40 : null
+        ;
+    
+        console.log(multiplier)
+        // convert slider value to a number from 1-4~ to use to multiply the already existing view values.
+        const multiplicationValue = parseFloat(`${(e.target.value / multiplier) + 1}`)
         const newViews = (multiplicationValue * this.props.data.videoStatistics.viewCount).toFixed(0)
         const newLikes = (multiplicationValue * this.props.data.videoStatistics.likeCount).toFixed(0)
         const newDislikes = (multiplicationValue * this.props.data.videoStatistics.dislikeCount).toFixed(0)
-        // if (this.state.betViews >= parseInt(this.props.data.videoStatistics.viewCount)) {
-            //     this.state.betAmount = (this.state.value - 30) * this.state.value
-            //     console.log(this.state.betAmount)
-            // }
-
 
         this.setState({
-            // convert multiplication value back to 0-100 and set it as slider value 
-            value: ((multiplicationValue - 1) * 30).toFixed(0),
+            // convert multiplication value back to 0-100 and set it as slider value.
+            value: ((multiplicationValue - 1) * multiplier).toFixed(0),
             betViews: newViews,
             betLikes: newLikes,
             betDislikes: newDislikes
