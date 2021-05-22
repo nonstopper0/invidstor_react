@@ -14,9 +14,11 @@ export default class MyProfile extends React.Component {
             new_email: '',
         }
     }
+
     componentDidMount() {
         this.getProfile(this.props.token)
     }
+
     getProfile = async (token) => {
 
         await fetch(`${process.env.REACT_APP_NODE_URL}/user/info?sessionID=${token}`)
@@ -33,11 +35,13 @@ export default class MyProfile extends React.Component {
                     console.log(json.message)
                 }
             })
-
-        this.setState({
-            loading: false
-        })
+            .then(() => {
+                this.setState({
+                    loading: false
+                })
+            })
     }
+
     handleSubmit = (e) => {
         e.preventDefault()
         this.setState({editing: false})
@@ -46,11 +50,13 @@ export default class MyProfile extends React.Component {
             this.updateProfile()
         }
     }
+
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
     }
+
     updateProfile = async(e) => {
         await fetch(`${process.env.REACT_APP_NODE_URL}/user/update`, {
             method: 'PUT',
@@ -72,6 +78,7 @@ export default class MyProfile extends React.Component {
               }
           })
     }
+
     render() {
         return (
             <React.Fragment>

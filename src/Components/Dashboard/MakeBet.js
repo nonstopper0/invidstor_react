@@ -32,7 +32,7 @@ export default class MakeBet extends React.Component {
     }
 
 
-    makeBet = (e) => {
+    makeBet = async (e) => {
         const {
             videoStatistics,
             videoId
@@ -49,7 +49,7 @@ export default class MakeBet extends React.Component {
                 userBet_viewCount: this.state.betViews,
                 userBet_likeCount: this.state.betLikes,
                 userBet_dislikeCount: this.state.betDislikes,
-                authToken: getKey('authtoken'),
+                authToken: await getKey('authtoken'),
                 videoId: videoId
             }),
             headers: {
@@ -60,6 +60,7 @@ export default class MakeBet extends React.Component {
             .then(response => response.json())
             .then(json => {
                 if (json.status === true) {
+                    // to be added
                 } else {
                     console.log(json.message)
                 }
