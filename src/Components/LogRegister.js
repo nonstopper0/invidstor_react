@@ -105,12 +105,14 @@ class LogRegister extends React.Component {
                         />
                         : null }
                         <input 
+                            maxLength="20" 
                             placeholder="username"
                             value={this.state.username}
                             onChange={this.handleChange}
                             name="username"
                         />
                         <input 
+                            maxLength="20" 
                             placeholder="password"
                             value={this.state.password}
                             onChange={this.handleChange}

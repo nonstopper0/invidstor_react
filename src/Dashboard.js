@@ -2,11 +2,10 @@ import React, {useState} from 'react'
 import Invest from './Components/Dashboard/Invest.js'
 import MyProfile from './Components/Dashboard/MyProfile.js'
 import Home from './Components/Dashboard/Home.js'
-import { HashRouter, Route, NavLink, Redirect, Switch } from 'react-router-dom'
+import { Route, NavLink } from 'react-router-dom'
 import { IoIosSettings, IoIosHome, IoIosCash, IoIosLogOut, IoIosArrowBack } from 'react-icons/io'
 
 export default function Dashboard(props) {
-    console.log(props);
     return (
         <div className="dashboard-container">
               <div className="dashboard-left">

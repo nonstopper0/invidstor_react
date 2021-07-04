@@ -102,8 +102,9 @@ export default function MyProfile(props) {
                                     <h2>Login: <span className="myProfileSpan">{userData.username}</span></h2>
                                 </div>
                                 <div className="myProfileEditingRow">
-                                    <h2>Display Name</h2>
+                                    <h2>Display Name: </h2>
                                     <input 
+                                        maxLength="20" 
                                         name="new_display_name"
                                         className="myProfileEditingRow" 
                                         value={newDisplayName}
@@ -115,8 +116,8 @@ export default function MyProfile(props) {
                                     <h2>Joined: <span className="myProfileSpan">{(userData.created_on).split("").slice(0, 10)}</span></h2>
                                 </div>
                                 <div className="myProfileEditingRow">
-                                    <h2>Email</h2>
-                                    <input 
+                                    <h2>Email: </h2>
+                                    <input
                                         name="new_email"
                                         className="myProfileEditingRow" 
                                         value={newEmail}

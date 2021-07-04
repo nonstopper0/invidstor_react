@@ -1,7 +1,6 @@
 .myProfileRow {
     color: #00d2ff;
     border-bottom: 1px solid rgba(255,255,255,.1);
-    animation: fadeIn 2s ease;
 }
 
 
@@ -15,17 +14,18 @@
     color: #00d2ff;
     display: flex;
     border-bottom: 1px solid rgba(255,255,255,.1);
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 .myProfileEditingRow input{
     background: rgba(0, 0, 0, 0.103);
     color: white;
-    font-size: 20px;
-    border: none;
+    font-size: 1.2rem;
     border: 1px solid rgb(27, 47, 66);
+    width: fit-content;
     margin: 10px;
-    padding-left: 30px;
-    width: 100%;
+    padding: 0px 30px;
     text-align: left;
     border-radius: 30px;
 }
