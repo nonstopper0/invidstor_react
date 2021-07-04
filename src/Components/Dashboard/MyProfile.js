@@ -1,70 +1,60 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './MyProfile.css'
 import { AiOutlineLoading3Quarters, AiFillEdit } from 'react-icons/ai'
 require('dotenv')
 
-export default class MyProfile extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            loading: true,
-            editing: false,
-            userData: {},
-            new_display_name: '',
-            new_email: '',
+export default function MyProfile(props) {
+    const [loading, setLoading] = useState(true);
+    const [editing, setEditing] = useState(false);
+    const [userData, setUserData] = useState({});
+    const [newDisplayName, setNewDisplayName] = useState('')
+    const [newEmail, setNewEmail] = useState('')
+
+    useEffect(() => {
+        getProfile(props.token)
+        return () => {
         }
-    }
+    }, [])
 
-    componentDidMount() {
-        this.getProfile(this.props.token)
-    }
-
-    getProfile = async (token) => {
+    const getProfile = async (token) => {
 
         await fetch(`${process.env.REACT_APP_NODE_URL}/user/info?sessionID=${token}`)
             .then(response => response.json())
             .then(json => {
                 if (json.status === true) {
                     console.log(json.userInfo)
-                    this.setState({
-                        userData: json.userInfo,
-                        new_email: json.userInfo.email,
-                        new_display_name: json.userInfo.display_name
-                    })
+                    setNewEmail(json.userInfo.email);
+                    setNewDisplayName(json.userInfo.display_name);
+                    setUserData(json.userInfo);
                 } else {
                     console.log(json.message)
                 }
             })
             .then(() => {
-                this.setState({
-                    loading: false
-                })
+                setLoading(false);
             })
     }
 
-    handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
-        this.setState({editing: false})
+        setEditing(false);
         // dont send update request to server if the data is unchanged.
-        if (this.state.new_display_name !== this.state.userData.display_name || this.state.new_email !== this.state.userData.email) {
-            this.updateProfile()
+        if (newDisplayName !== userData.display_name || newEmail !== userData.email) {
+            updateProfile()
         }
     }
 
-    handleChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+    const handleChange = (e) => {
     }
 
-    updateProfile = async(e) => {
+    const updateProfile = async(e) => {
         await fetch(`${process.env.REACT_APP_NODE_URL}/user/update`, {
             method: 'PUT',
             body: JSON.stringify({
-                sessionID: this.props.token,
+                sessionID: props.token,
                 updateInfo: {
-                    email: this.state.new_email,
-                    display_name: this.state.new_display_name
+                    email: newEmail,
+                    display_name: newDisplayName
                 }
             }),
             headers: {
@@ -74,70 +64,68 @@ export default class MyProfile extends React.Component {
           .then(response => response.json())
           .then(json => {
               if (json.status === true) {
-                  this.getProfile(this.props.token)
+                  getProfile(props.token)
               }
           })
     }
 
-    render() {
-        return (
+    return (
             <React.Fragment>
-                <div className="dashboard-right-container">
-                { !this.state.loading ? 
+                { !loading ? 
 
                         <div>
 
-                            { !this.state.editing ? 
+                            { !editing ? 
                             // default state
                             <div>
                                 <div className="myProfileRow">
-                                    <h2>Login: <span className="myProfileSpan">{this.state.userData.username}</span></h2>
+                                    <h2>Login: <span className="myProfileSpan">{userData.username}</span></h2>
                                 </div>
                                 <div className="myProfileRow">
-                                    <h2>Display Name: <span className="myProfileSpan">{this.state.userData.display_name}</span></h2>
+                                    <h2>Display Name: <span className="myProfileSpan">{userData.display_name}</span></h2>
                                 </div>
                                 <div className="myProfileRow">
-                                    <h2>Joined: <span className="myProfileSpan">{(this.state.userData.created_on).split("").slice(0, 10)}</span></h2>
+                                    <h2>Joined: <span className="myProfileSpan">{(userData.created_on).split("").slice(0, 10)}</span></h2>
                                 </div>
                                 <div className="myProfileRow">
-                                    <h2>Email: <span className="myProfileSpan">{this.state.userData.email}</span></h2>
+                                    <h2>Email: <span className="myProfileSpan">{userData.email}</span></h2>
                                 </div>
                                 <div className="myProfileRow">
-                                    <h2>Credits: <span className="myProfileSpan">{this.state.userData.credits}</span></h2>
+                                    <h2>Credits: <span className="myProfileSpan">{userData.credits}</span></h2>
                                 </div>
-                                <button className="myProfileEditingButton" onClick={()=>this.setState({editing: true})}><AiFillEdit style={{fontSize: 30}} /></button>
+                                <button className="myProfileEditingButton" onClick={()=>setEditing(true)}><AiFillEdit style={{fontSize: 30}} /></button>
                             </div>
                             :
                             // editing button pressed
-                            <form onSubmit={this.handleSubmit}>
+                            <form onSubmit={handleSubmit}>
                                 <div className="myProfileRow">
-                                    <h2>Login: <span className="myProfileSpan">{this.state.userData.username}</span></h2>
+                                    <h2>Login: <span className="myProfileSpan">{userData.username}</span></h2>
                                 </div>
                                 <div className="myProfileEditingRow">
                                     <h2>Display Name</h2>
                                     <input 
                                         name="new_display_name"
                                         className="myProfileEditingRow" 
-                                        value={this.state.new_display_name}
-                                        placeholder={this.state.userData.display_name}
-                                        onChange={this.handleChange}
+                                        value={newDisplayName}
+                                        placeholder={userData.display_name}
+                                        onChange={(e) => setNewDisplayName(e.target.value)}
                                     />
                                 </div>
                                 <div className="myProfileRow">
-                                    <h2>Joined: <span className="myProfileSpan">{(this.state.userData.created_on).split("").slice(0, 10)}</span></h2>
+                                    <h2>Joined: <span className="myProfileSpan">{(userData.created_on).split("").slice(0, 10)}</span></h2>
                                 </div>
                                 <div className="myProfileEditingRow">
                                     <h2>Email</h2>
                                     <input 
                                         name="new_email"
                                         className="myProfileEditingRow" 
-                                        value={this.state.new_email}
-                                        placeholder={this.state.userData.email}
-                                        onChange={this.handleChange}
+                                        value={newEmail}
+                                        placeholder={userData.email}
+                                        onChange={(e) => setNewEmail(e.target.value)}
                                     />
                                 </div>
                                 <div className="myProfileRow">
-                                    <h2>Credits: <span className="myProfileSpan">{this.state.userData.credits}</span></h2>
+                                    <h2>Credits: <span className="myProfileSpan">{userData.credits}</span></h2>
                                 </div>
                                 <button className="myProfileEditingButton">Submit</button>
                             </form>
@@ -150,8 +138,6 @@ export default class MyProfile extends React.Component {
                         <AiOutlineLoading3Quarters id="dashboard-invest-spinner" />
                     </div>
                 }
-                </div>
             </React.Fragment>
-        )
-    }
+    )
 }

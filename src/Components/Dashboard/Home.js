@@ -29,15 +29,13 @@ export default class Dashboard extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <div className="dashboard-right-container">
-                    <div className="dashboard-home">
-                        <h3> Welcome back, </h3>
-                            { !this.state.loading ? 
-                            <h1>Loaded</h1>
-                            :
-                            null 
-                            }
-                    </div>
+                <div className="dashboard-home">
+                    <h3> Welcome back, </h3>
+                        { !this.state.loading ? 
+                        <h1>Loaded</h1>
+                        :
+                        null 
+                        }
                 </div>
             </React.Fragment>
         )

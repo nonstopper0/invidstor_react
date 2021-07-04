@@ -124,50 +124,37 @@ export default class Home extends React.Component {
     }
 
     render() {
-        return (
+        return ( 
             <React.Fragment>
-                <div className="dashboard-right-container">
-                    
-                    { !this.state.makeBetScreen ? 
-
-                        <div> 
-                            <button onClick={this.openModal} id="dashboard-invest-help-button"><FaRegQuestionCircle id="dashboard-invest-help-icon" /></button>
-
-                            { !this.state.loading ?
-
-                            <div className="dashboard-invest-input-container">
-                                { this.state.modal ? <Modal close={this.openModal} heading={'Investment Page'} text={'This is a test modal'}/> : null}
-                                <h2>INVESTOR</h2>
-                                <p>Paste the video url below to begin</p>
-                                <form onSubmit={this.handleSubmit}>
-                                    <input 
-                                        value={this.state.url}
-                                        onChange={this.handleChange}
-                                        name="url"
-                                        placeholder={this.state.message}
-                                    />
-                                    <button><IoMdPlay /></button>
-                                </form>
-                                <h6>Video must be no more than 24 hours old and the poster must have atleast 4 videos</h6>
-                                <h6>Example: https://www.youtube.com/watch?v=ycPr5-27vSI</h6>
-                            </div>
-
-                            :
-
-                            <div className="dashboard-invest-input-container">
-                                <AiOutlineLoading3Quarters id="dashboard-invest-spinner" />
-                            </div>
-
-                            }
-
+                { !this.state.makeBetScreen ? 
+                    <div> 
+                        <button onClick={this.openModal} id="dashboard-invest-help-button"><FaRegQuestionCircle id="dashboard-invest-help-icon" /></button>
+                        { !this.state.loading ?
+                        <div className="dashboard-invest-input-container">
+                            { this.state.modal ? <Modal close={this.openModal} heading={'Investment Page'} text={'This is a test modal'}/> : null}
+                            <h2>INVESTOR</h2>
+                            <p>Paste the video url below to begin</p>
+                            <form onSubmit={this.handleSubmit}>
+                                <input 
+                                    value={this.state.url}
+                                    onChange={this.handleChange}
+                                    name="url"
+                                    placeholder={this.state.message}
+                                />
+                                <button><IoMdPlay /></button>
+                            </form>
+                            <h6>Video must be no more than 24 hours old and the poster must have atleast 4 videos</h6>
+                            <h6>Example: https://www.youtube.com/watch?v=ycPr5-27vSI</h6>
                         </div>
-                    :
-
-                    <MakeBet data={this.state.data}/>
-
-                    }
-                </div>
-                
+                        :
+                        <div className="dashboard-invest-input-container">
+                            <AiOutlineLoading3Quarters id="dashboard-invest-spinner" />
+                        </div>
+                        }
+                    </div>
+                :
+                <MakeBet data={this.state.data}/>
+                }
             </React.Fragment>
         )
     }

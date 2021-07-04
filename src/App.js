@@ -3,15 +3,12 @@ import { HashRouter, Route, NavLink, Redirect, Switch } from 'react-router-dom'
 
 //components
 import { storeKey, getKey, removeKey } from './Key.js'
-import Dashboard from './Components/Dashboard/Home.js'
-import Invest from './Components/Dashboard/Invest.js'
-import MyProfile from './Components/Dashboard/MyProfile.js'
+import Dashboard from './Dashboard.js'
 import LandingHome from './Components/Landing/Home.js'
 import LogRegister from './Components/LogRegister.js'
 
 //styling
 import './App.scss';
-import { IoIosSettings, IoIosHome, IoIosCash, IoIosLogOut, IoIosArrowBack } from 'react-icons/io'
 
 require('dotenv').config()
 
@@ -145,30 +142,7 @@ export default class App extends React.Component {
           <Route exact path="/login" component={() => <LogRegister login={this.login}/>} />
           { this.state.token ?
           <Route path="/dashboard">
-            <div className="dashboard-container">
-
-              <div className="dashboard-left">
-                  <div className="dashboard-text">
-                    <h1>InVIDstor</h1>
-                    <p>Investing in content</p>
-                  </div>
-                  <header>
-                    <NavLink exact to="/dashboard/home" activeClassName="dashboard-header-active"><IoIosHome className="dashboard-icons" />Dashboard</NavLink>
-                    <NavLink exact to="/dashboard/invest" activeClassName="dashboard-header-active"><IoIosCash className="dashboard-icons" />Invest</NavLink>
-                    <NavLink exact to="/dashboard/profile" activeClassName="dashboard-header-active"><IoIosSettings className="dashboard-icons" />My Profile</NavLink>
-                    <a onClick={this.logout}><IoIosLogOut className="dashboard-icons" />Logout</a>
-                  </header>
-                  <footer>
-                    <NavLink exact to="/"><IoIosArrowBack className="dashboard-back-button"/>Home Page</NavLink>
-                  </footer>
-              </div>
-
-              <div className="dashboard-right">
-                <Route exact path="/dashboard/home" component={() => <Dashboard token={this.state.token} /> } />
-                <Route exact path="/dashboard/invest" component={Invest} />
-                <Route exact path="/dashboard/profile" component={() => <MyProfile token={this.state.token}/>} />
-              </div>
-            </div>
+            <Dashboard token={this.state.token} logout={this.logout} />
             </Route>
             :
             this.InitialRedirect()
