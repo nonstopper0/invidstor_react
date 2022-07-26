@@ -12,27 +12,22 @@ export default function MyProfile(props) {
 
     useEffect(() => {
         getProfile(props.token)
-        return () => {
-        }
     }, [])
 
     const getProfile = async (token) => {
+        const response = await fetch(`${process.env.REACT_APP_NODE_URL}/user/info?sessionID=${token}`)
+        let JSONResponse = await response.json();
 
-        await fetch(`${process.env.REACT_APP_NODE_URL}/user/info?sessionID=${token}`)
-            .then(response => response.json())
-            .then(json => {
-                if (json.status === true) {
-                    console.log(json.userInfo)
-                    setNewEmail(json.userInfo.email);
-                    setNewDisplayName(json.userInfo.display_name);
-                    setUserData(json.userInfo);
-                } else {
-                    console.log(json.message)
-                }
-            })
-            .then(() => {
-                setLoading(false);
-            })
+        if (JSONResponse.status === true) {
+            console.log(JSONResponse.userInfo)
+            setNewEmail(JSONResponse.userInfo.email);
+            setNewDisplayName(JSONResponse.userInfo.display_name);
+            setUserData(JSONResponse.userInfo);
+        } else {
+            console.log(JSONResponse.message)
+        }  
+
+        setLoading(false);
     }
 
     const handleSubmit = (e) => {
@@ -44,37 +39,29 @@ export default function MyProfile(props) {
         }
     }
 
-    const handleChange = (e) => {
-    }
-
     const updateProfile = async(e) => {
-        await fetch(`${process.env.REACT_APP_NODE_URL}/user/update`, {
+        const response = await fetch(`${process.env.REACT_APP_NODE_URL}/user/update`, {
             method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 sessionID: props.token,
                 updateInfo: {
                     email: newEmail,
                     display_name: newDisplayName
                 }
-            }),
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          })
-          .then(response => response.json())
-          .then(json => {
-              if (json.status === true) {
-                  getProfile(props.token)
-              }
-          })
+            })
+        })
+        let JSONResponse = await response.json()
+        if (JSONResponse.status === true) {
+            getProfile(props.token)
+        }
     }
 
     return (
             <React.Fragment>
                 { !loading ? 
-
+                    /* Loaded */
                         <div>
-
                             { !editing ? 
                             // default state
                             <div>
@@ -130,11 +117,10 @@ export default function MyProfile(props) {
                                 </div>
                                 <button className="myProfileEditingButton">Submit</button>
                             </form>
-
                             }
-
                         </div>
                 :
+                    /* Loading */
                     <div className="dashboard-right-home">
                         <AiOutlineLoading3Quarters id="dashboard-invest-spinner" />
                     </div>
